@@ -1,12 +1,12 @@
 === Product Code for WooCommerce ===
 
-Contributors: Artiosmedia, steveneray, repon.wp
+Contributors: Artiosmedia, steveneray, arafatrahmanbd
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=E7LS2JGFPLTH2
 Tags: product code, product number, bin number, warehouse tracking, order number
 Requires at least: 4.6
-Tested up to: 6.6.1
-Version: 1.4.7
-Stable tag: 1.4.7
+Tested up to: 6.7.1
+Version: 1.4.8
+Stable tag: 1.4.8
 Requires PHP: 7.4.33
 License: GPLv3 or later license and included
 URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -37,13 +37,13 @@ As of <strong>version 1.4.1</strong>, an administrator can choose to hide the de
 2. Activate the plugin through the 'Plugins' screen in WordPress.
 3. Enter the Product Code under the SKU from either Variable or Simple products.
 
-== Technical Details for Release 1.4.7 ==
+== Technical Details for Release 1.4.8 ==
 
 Load time: 0.294 s; Memory usage: 3.63 MiB
-PHP up to tested version: 8.3.11
-MySQL up to tested version: 8.0.39
-MariaDB up to tested version: 11.5.2
-cURL up to tested version: 8.9.1, OpenSSL/3.3.1
+PHP up to tested version: 8.3.13
+MySQL up to tested version: 8.4.3
+MariaDB up to tested version: 11.7.0
+cURL up to tested version: 8.11.0, OpenSSL/3.4.0
 PHP 7.4, 8.0, 8.1, 8.2, and 8.3 compliant.
 
 == Using in Multisite Installation ==
@@ -134,6 +134,14 @@ Please click the following link to check the current stability of this plugin:
 None to report as of the release version
 
 == Changelog ==
+
+1.4.8 12/27/24
+- Fixed: Issue where the product code was not displaying on the Quick View modal
+- Added: Support for hiding product codes using the short code 
+- Added: Option to display product shelf location only on the backend (order page) while hidden on frontend
+- Added: Option to customize the color of the product code.
+- Assure compliance with WordPress 6.7.1
+- Assure compliance with WooCommerce 9.5.1
 
 1.4.7 09/01/24
 - Minor edits to language files

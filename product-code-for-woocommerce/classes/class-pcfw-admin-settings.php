@@ -153,6 +153,13 @@ class PCFW_Admin_Settings {
 					'value' => get_post_meta($post->ID, PRODUCT_CODE_FIELD_NAME_SECOND, true)
 				]);
 			}
+
+			$html .= woocommerce_wp_text_input([
+				'id' => PRODUCT_CODE_COLOR,
+				'label' => 'Product Code Color',
+				'desc_tip' => true,
+				'value' => get_post_meta($post->ID, PRODUCT_CODE_COLOR, true)
+			]);
 		}
 		return $html;
 	}
@@ -180,6 +187,17 @@ class PCFW_Admin_Settings {
 
 			// Saving Second Field Product Meta
 			$field_name = PRODUCT_CODE_FIELD_NAME_SECOND;
+			if (!empty($_POST[$field_name])) {
+				$code = sanitize_text_field($post_data[$field_name]);
+				if (!add_post_meta($post->ID, $field_name, $code, true)) {
+					update_post_meta($post->ID, $field_name, $code);
+				}
+			} else {
+				delete_post_meta($post->ID, $field_name);
+			}
+
+			// Saving PRODUCT_CODE_COLOR
+			$field_name = PRODUCT_CODE_COLOR;
 			if (!empty($_POST[$field_name])) {
 				$code = sanitize_text_field($post_data[$field_name]);
 				if (!add_post_meta($post->ID, $field_name, $code, true)) {
@@ -418,6 +436,16 @@ class PCFW_Admin_Settings {
 
 		// Saving Second Field Product Meta
 		$field_name = PRODUCT_CODE_FIELD_NAME_SECOND;
+		if (!empty($post_data[$field_name])) {
+			$code = sanitize_text_field($post_data[$field_name]);
+			if (!add_post_meta($product_id, $field_name, $code, true)) {
+				update_post_meta($product_id, $field_name, $code);
+			}
+		} else {
+			delete_post_meta($product_id, $field_name);
+		}
+		// Saving 
+		$field_name = PRODUCT_CODE_COLOR;
 		if (!empty($post_data[$field_name])) {
 			$code = sanitize_text_field($post_data[$field_name]);
 			if (!add_post_meta($product_id, $field_name, $code, true)) {

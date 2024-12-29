@@ -108,10 +108,12 @@ class PCFW_Services {
 	public function add_code_to_cart_product($cart_item_data, $product_id, $variation_id) {
 		$id = $variation_id ? $variation_id : $product_id;
 		$simple_field_name = PRODUCT_CODE_FIELD_NAME;
+		$color = get_post_meta($id, PRODUCT_CODE_COLOR, true);
 		if (get_option('product_code') == 'yes') :
 			$simple_value = get_post_meta($id, $simple_field_name, true);
 			if ($simple_value) {
-				$cart_item_data[$simple_field_name] = $simple_value;
+				$formatted_value = '<span style="color: ' . esc_attr($color) . ' !important;">' . do_shortcode($simple_value) . '</span>';
+				$cart_item_data[$simple_field_name] = $formatted_value;
 			}
 		endif;
 		if (get_option('product_code_second') == 'yes' && get_option('product_code_second_show') == 'yes') :
@@ -120,7 +122,8 @@ class PCFW_Services {
 			$simple_field_name = PRODUCT_CODE_FIELD_NAME_SECOND;
 			$simple_value = get_post_meta($id, $simple_field_name, true);
 			if ($simple_value) {
-				$cart_item_data[$simple_field_name] = $simple_value;
+				$formatted_value = '<span style="color: ' . esc_attr($color) . ' !important;">' . do_shortcode($simple_value) . '</span>';
+				$cart_item_data[$simple_field_name] = $formatted_value;
 			}
 		endif;
 
@@ -132,11 +135,15 @@ class PCFW_Services {
 		$simple_field_name = PRODUCT_CODE_FIELD_NAME;
 		$txt = get_option('product_code_text', '');
 		$cart_data = [];
+		$product_id = $cart_item['product_id'];
+		$color = get_post_meta($product_id, PRODUCT_CODE_COLOR, true);
+
 		if ('yes' == get_option('product_code')) :
 			if (isset($cart_item[$simple_field_name])) {
+				$formatted_value = '<span style="color: ' . esc_attr($color) . ' !important;">' . do_shortcode($cart_item[$simple_field_name]) . '</span>';
 				$cart_data[] = array(
 					'name'	 => $txt ? $txt : __('Product Code', 'product-code-for-woocommerce'),
-					'value'	 => $cart_item[$simple_field_name],
+					'value'	 => $formatted_value,
 				);
 			}
 		endif;
@@ -148,9 +155,11 @@ class PCFW_Services {
 
 			// $cart_data = [];
 			if (isset($cart_item[$simple_field_name])) {
+				$formatted_value = '<span style="color: ' . esc_attr($color) . ' !important;">' . do_shortcode($cart_item[$simple_field_name]) . '</span>';
+
 				$cart_data[] = array(
 					'name'	 => $txt ? $txt : __('Product Code', 'product-code-for-woocommerce'),
-					'value'	 => $cart_item[$simple_field_name],
+					'value'	 => $formatted_value,
 				);
 			}
 		endif;
@@ -186,6 +195,8 @@ class PCFW_Services {
 		if (empty($value)) {
 			return $formatted_meta;
 		}
+
+		
 
 		$formatted_meta[$field_name] = (object) [
 			'key'		 => $field_name,
@@ -234,12 +245,32 @@ class PCFW_Services {
 		if ('yes' == get_option('product_code')) {
 			$post	 = get_post();
 			$value	 = get_post_meta($post->ID, PRODUCT_CODE_FIELD_NAME, true);
+			if ($this->contains_shortcode($value)) {
+				$value = do_shortcode($value); // Process the shortcode
+			}
 			$text	 = get_option('product_code_text', '');
 			$value_second	 = get_post_meta($post->ID, PRODUCT_CODE_FIELD_NAME_SECOND, true);
+			if ($this->contains_shortcode($value_second)) {
+				$value_second = do_shortcode($value_second); // Process the shortcode
+			}
 
 			$text_second	 = get_option('product_code_text_second', '');
 			include_once(PRODUCT_CODE_TEMPLATE_PATH . '/product-meta-row.php');
 		}
+	}
+
+	/**
+	 * Check if a string contains a shortcode
+	 *
+	 * @param string $string The string to check
+	 * @return bool True if the string contains a shortcode, false otherwise
+	 */
+	private function contains_shortcode($string) {
+		// Check if the string contains the shortcode format [shortcode_name]
+		if (is_string($string) && preg_match('/\[([a-zA-Z0-9_-]+)[^\]]*\]/', $string)) {
+			return true;
+		}
+		return false;
 	}
 
 	public function add_woocommerce_settings($sections) {
@@ -374,6 +405,14 @@ class PCFW_Services {
 				),
 
 				'desc_tip'	 => true,
+			);
+
+			$settings_slider[]	 = array(
+				'name'	 => __('Hide product codes for customers', 'product-code-for-woocommerce'),
+				'id'	 => 'product_code_for_admin',
+				'type'	 => 'checkbox',
+				'css'	 => 'min-width:300px;',
+				'desc'	 => __('Hide product codes for customers on the front end of your store.', 'product-code-for-woocommerce'),
 			);
 
 			$settings_slider[] = array('type' => 'sectionend', 'id' => 'product_code_settings');
