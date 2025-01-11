@@ -5,8 +5,8 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: product code, product number, bin number, warehouse tracking, order number
 Requires at least: 4.6
 Tested up to: 6.7.1
-Version: 1.4.8
-Stable tag: 1.4.8
+Version: 1.4.9
+Stable tag: 1.4.9
 Requires PHP: 7.4.33
 License: GPLv3 or later license and included
 URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -37,14 +37,14 @@ As of <strong>version 1.4.1</strong>, an administrator can choose to hide the de
 2. Activate the plugin through the 'Plugins' screen in WordPress.
 3. Enter the Product Code under the SKU from either Variable or Simple products.
 
-== Technical Details for Release 1.4.8 ==
+== Technical Details for Release 1.4.9 ==
 
 Load time: 0.294 s; Memory usage: 3.63 MiB
-PHP up to tested version: 8.3.13
+PHP up to tested version: 8.3.15
 MySQL up to tested version: 8.4.3
-MariaDB up to tested version: 11.7.0
-cURL up to tested version: 8.11.0, OpenSSL/3.4.0
-PHP 7.4, 8.0, 8.1, 8.2, and 8.3 compliant.
+MariaDB up to tested version: 11.8.0
+cURL up to tested version: 8.11.1, OpenSSL/3.4.0
+PHP 7.4, 8.0, 8.1, 8.2, and 8.3 compliant. Not tested on 8.4 yet.
 
 == Using in Multisite Installation ==
 
@@ -134,6 +134,10 @@ Please click the following link to check the current stability of this plugin:
 None to report as of the release version
 
 == Changelog ==
+
+1.4.9 01/11/25
+- Added: Update language file for Product Code Color.
+- Assure compliance with WooCommerce 9.5.2
 
 1.4.8 12/27/24
 - Fixed: Issue where the product code was not displaying on the Quick View modal

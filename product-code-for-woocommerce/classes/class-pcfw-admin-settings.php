@@ -156,7 +156,7 @@ class PCFW_Admin_Settings {
 
 			$html .= woocommerce_wp_text_input([
 				'id' => PRODUCT_CODE_COLOR,
-				'label' => 'Product Code Color',
+				'label' => __('Product Code Color', 'product-code-for-woocommerce'),
 				'desc_tip' => true,
 				'value' => get_post_meta($post->ID, PRODUCT_CODE_COLOR, true)
 			]);

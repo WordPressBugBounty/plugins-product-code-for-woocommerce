@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Product Code for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-17 01:54-0400\n"
-"PO-Revision-Date: 2023-10-17 01:54-0400\n"
+"PO-Revision-Date: 2025-01-01 22:26+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
-"X-Generator: Poedit 3.4\n"
+"X-Generator: Poedit 3.5\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: product-code-for-woocommerce.php\n"
@@ -70,6 +70,10 @@ msgstr "Details Anzeigen"
 #: classes/class-pcfw-services.php:101
 msgid "Donation for Homeless"
 msgstr "Spende für Obdachlose"
+
+#: classes/class-pcfw-services.php:159
+msgid "Product Code Color"
+msgstr "Produktcode-Farbe"
 
 #: classes/class-pcfw-services.php:136 classes/class-pcfw-services.php:150
 #: classes/class-pcfw-services.php:163 classes/class-pcfw-services.php:168

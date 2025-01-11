@@ -62,6 +62,11 @@ msgstr ""
 msgid "Donation for Homeless"
 msgstr ""
 
+#: classes/class-pcfw-services.php:159
+msgid "Product Code Color"
+msgstr ""
+
+
 #: classes/class-pcfw-services.php:136 classes/class-pcfw-services.php:150
 #: classes/class-pcfw-services.php:163 classes/class-pcfw-services.php:168
 #: classes/class-pcfw-services.php:191 classes/class-pcfw-services.php:213
