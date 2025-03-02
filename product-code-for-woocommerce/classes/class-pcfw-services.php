@@ -97,10 +97,12 @@ class PCFW_Services {
 			'height'	 => 563,
 
 		], self_admin_url('plugin-install.php')), $plugin_data['Name'], __('View Details', 'product-code-for-woocommerce'));
-		$links['donation'] = sprintf('<a href="%s" target="_blank">%s</a>', add_query_arg([
-			'cmd'			 => '_s-xclick',
-			'hosted_button_id'	 => PRODUCT_CODE_PAYPAL_ID
-		], 'https://www.paypal.com/cgi-bin/webscr'), __('Donation for Homeless', 'product-code-for-woocommerce'));
+
+		$links['donation'] = sprintf(
+			'<a href="%s" target="_blank">%s</a>',
+			esc_url('https://www.zeffy.com/en-US/donation-form/your-donation-makes-a-difference-6'),
+			__('Donation for Homeless', 'product-code-for-woocommerce')
+		);
 
 		return $links;
 	}

@@ -27,6 +27,8 @@ class PCFW_Admin_Settings {
 		// add_action( 'woocommerce_product_quick_edit_end', [ $this, 'add_quick_edit_field' ] );
 		add_action('admin_notices', array($this, 'admin_notice'));
 		add_action('wp_ajax_product_code_dismiss_notice', array($this, 'dismiss_notice'));
+		add_action('wp_ajax_product_code_review_clicked', array($this,'review_clicked'));
+
 
 		// Will be removed in next update
 		add_action('wp_ajax_product_code_update_database', array($this, 'update_database'));
@@ -95,6 +97,53 @@ class PCFW_Admin_Settings {
 		die();
 	}
 
+	public function admin_notice() {
+		
+
+		if (!is_plugin_active('product-code-for-woocommerce/product-code-for-woocommerce.php')) {
+			return;
+		}
+	
+		$user_id = get_current_user_id();
+		$pcfw_dismissed = get_user_meta($user_id, 'pcfw_notice_dismissed', true);
+		$pcfw_clicked = get_user_meta($user_id, 'pcfw_notice_clicked', true);
+		$last_pcfw_time = get_user_meta($user_id, 'pcfw_notice_last_time', true);
+		$current_time = time();
+		$thirty_days = 30 * DAY_IN_SECONDS;
+	
+		
+		
+		// If the review was clicked
+		if ($pcfw_clicked) {
+			return;
+		}
+
+		// If 30 days have NOT passed, return early and do NOT show the notice
+		if ($last_pcfw_time && ($current_time - $last_nag_time) < $thirty_days) {
+			return;
+		}
+
+		echo '<div class="notice notice-info is-dismissible" id="pcfw_review_link">
+        <p>How do you like <strong>Product Code for WooCommerce</strong>? Your feedback assures the continued maintenance of this plugin! <a id="pcfw-feedback-done" class="button button-primary" href="https://wordpress.org/plugins/product-code-for-woocommerce/#reviews" target="_blank">Leave Feedback</a></p>
+        </div>';
+	}
+
+	public function dismiss_notice() {
+		$user_id = get_current_user_id();
+		update_user_meta($user_id, 'pcfw_notice_dismissed', 1);
+		update_user_meta($user_id, 'pcfw_notice_last_time', time());
+		wp_die();
+	}
+
+	public function review_clicked() {
+
+		$user_id = get_current_user_id();
+		update_user_meta($user_id, 'pcfw_notice_clicked', 1);
+		wp_die();
+	}
+
+	/*
+
 	public function dismiss_notice() {
 		$post_data = filter_input_array(INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS);
 
@@ -107,15 +156,17 @@ class PCFW_Admin_Settings {
 			wp_send_json(array('status' => true));
 		}
 	}
+	
 	public function admin_notice() {
 		$last_dismissed = get_option('product_code_notice_dismiss');
 
 		if ($last_dismissed && current_time('timestamp') >= strtotime($last_dismissed)) {
 			echo '<div class="notice notice-info is-dismissible" id="product_code_notice">
-            <p>How do you like <strong>Product Code for WooCommerce</strong>? Your feedback assures the continued maintenance of this plugin! <a class="button button-primary" href="https://wordpress.org/plugins/product-code-for-woocommerce/#reviews" target="_blank">Leave Feedback</a></p>
+            <p>How do you like <strong>Product Code for WooCommerce</strong>? Your feedback assures the continued maintenance of this plugin! <a id="pcfw-feedback-done" class="button button-primary" href="https://wordpress.org/plugins/product-code-for-woocommerce/#reviews" target="_blank">Leave Feedback</a></p>
             </div>';
 		}
 	}
+	*/
 
 	public function add_inventory_field() {
 		global $post;

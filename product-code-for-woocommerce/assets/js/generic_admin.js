@@ -1,3 +1,4 @@
+/*
 jQuery(document).ready( function( $ ) {
     $( "#product_code_notice" ).on( "click", ".notice-dismiss", function() {
         product_code_dismiss_notice(0)
@@ -21,6 +22,23 @@ function product_code_dismiss_notice( is_final ) {
         }
     })
 }
+*/
+
+jQuery(document).ready(function($) {
+    // When the X button is clicked
+    $('.product_code_notice').on('click', '.notice-dismiss', function() {
+        jQuery.post(ajaxurl, {
+            action: 'product_code_dismiss_notice',
+        });
+    });
+
+    // When the review link is clicked
+    $('#pcfw_review_link').on('click', function() {
+        jQuery.post(ajaxurl, {
+            action: 'product_code_review_clicked',
+        });
+    });
+});
 
 // Code to add field title for 18 characters
 jQuery( document ).ready( function ($) {

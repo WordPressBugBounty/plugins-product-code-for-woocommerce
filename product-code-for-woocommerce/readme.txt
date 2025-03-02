@@ -1,56 +1,56 @@
 === Product Code for WooCommerce ===
 
 Contributors: Artiosmedia, steveneray, arafatrahmanbd
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=E7LS2JGFPLTH2
+Donate link: https://www.zeffy.com/en-US/donation-form/your-donation-makes-a-difference-6
 Tags: product code, product number, bin number, warehouse tracking, order number
 Requires at least: 4.6
-Tested up to: 6.7.1
-Version: 1.4.9
-Stable tag: 1.4.9
+Tested up to: 6.7.2
+Version: 1.5.0
+Stable tag: 1.5.0
 Requires PHP: 7.4.33
 License: GPLv3 or later license and included
 URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-This plugin will allow a user to add up to two additional internal product identifiers in addition to the GTIN, EAN, SKU or UPC to the order process.
+This plugin will allow a user to add up to two additional internal product identifiers to the order process in addition to the GTIN, EAN, SKU, or UPC.
 
 == Description ==
 
-This is a user-friendly plugin that many website designers, developers, and business owners look for when they require an additional product code field. It is often used for an inventory control number, internal stock number, or bin location. The plugin allows you to add a product identifier to each or some variable or single items in Woocommerce. The custom field value can be passed through during order fulfillment, referenced from each item ordered. The field value can be viewed user side if desired or turned off if not.
+This is a user-friendly plugin that many website designers, developers, and business owners look for when they require an additional product code field. It is often used for an inventory control number, internal stock number, or bin location. The plugin allows you to add a product identifier to each variable or single item in WooCommerce. The custom field value can be passed through during order fulfillment and referenced from each item ordered. The field value can be viewed on the user side or turned off if desired.
 
-A unique product code is often added in addition to the GTIN, EAN, SKU, and UPC throughout the order process. However, all current plugins that might address this need entail complex setups and functions which result in extra memory usage, system conflicts, and frequent updates. This plugin eliminates all those hurdles by providing a simple solution without excessive options.
+Throughout the order process, a unique product code is often added in addition to the GTIN, EAN, SKU, and UPC. However, all current plugins that might address this need entail complex setups and functions, which result in extra memory usage, system conflicts, and frequent updates. This plugin eliminates all those hurdles by providing a simple solution without excessive options.
 
-Simply install, enter your product codes within each product post (variation or single), and publish. Nothing more to it than that! If you don't want customers to be able to see the unique product code, the user-side display can be turned off in setup. The field label can be easily changed in setup too, to read ISBN for example or Bin Number, Stock Number, EAN, or JAN. Any value can be created and entered as a single new field.
+Simply install, enter your product codes within each product post (variation or single), and publish. There is nothing more to it than that! If you don't want customers to be able to see the unique product code, the user-side display can be turned off in setup. The field label can also be easily changed in setup to read ISBN, Bin Number, Stock Number, EAN, or JAN. Any value can be created and entered as a single new field.
 
-The added fields are compliant with mappable data import and export schemes. This same compliance allows the fields to be included in a Google Merchant product feed using custom mapping. It also provides support for Schema.org/Product with an option to choose the property name (GTIN, EAN, UPC, ISBN) to set inside the structured data.
+The added fields are compliant with mappable data import and export schemes. This exact compliance allows the fields to be included in a Google Merchant product feed using custom mapping. It also provides support for Schema.org/Product with an option to choose the property name (GTIN, EAN, UPC, ISBN) to set inside the structured data.
 
-You can also search product codes using the WordPress default search from the user side as well as from the administrator Woocommerce product list page on the backend. It is compatible to search product codes using the popular <a href="https://wordpress.org/plugins/relevanssi/" target="_blank">Relevanssi</a>, <a href="https://searchwp.com/" target="_blank">SearchWP</a> and, <a href="https://ajaxsearchpro.com/" target="_blank">Ajax Search Pro</a>.
+You can also search product codes using the WordPress default search from the user side as well as from the administrator WooCommerce product list page on the backend. It is compatible to search product codes using the popular <a href="https://wordpress.org/plugins/relevanssi/" target="_blank">Relevanssi</a>, <a href="https://searchwp.com/" target="_blank">SearchWP</a> and, <a href="https://ajaxsearchpro.com/" target="_blank">Ajax Search Pro</a>.
 
 The plugin's languages include English, Spanish, French, German, and Russian.
 
-As of <strong>version 1.3.1</strong>, the Product Code primary field is now displayed by default in the WooCommerce product panel, switchable to off from the top tab dropdown if desired. If your second Product Code field is activated from settings, it will appear to the right of the Product panel. Additionally, the Product Code primary field now appears in the WooCommerce Quick Edit panel. Turn on the second Product Code and it will display after the primary field in the Quick Edit panel. Make sure you clear your caches (website and browser) if you are updating from the previous plugin.
+As of <strong>version 1.3.1</strong>, the Product Code primary field is now displayed by default in the WooCommerce product panel, switchable to off from the top tab dropdown if desired. If your second Product Code field is activated from settings, it will appear to the right of the Product panel. Additionally, the Product Code primary field now appears in the WooCommerce Quick Edit panel. Turn on the second Product Code, which will display after the primary field in the Quick Edit panel. Make sure you clear your caches (website and browser) if you are updating from the previous plugin.
 
 As of <strong>version 1.4.1</strong>, an administrator can choose to hide the default and secondary product code from the user-side product posts while the other display injections still work (checkout, cart, and receipts).
 
 == Installation ==
 
-1. Upload the plugin files to the '/wp-content/plugins/plugin-name' directory, or install the plugin through the WordPress plugins screen directly.
+1. Upload the plugin files to the '/wp-content/plugins/plugin-name' directory or install them directly through the WordPress plugins screen.
 2. Activate the plugin through the 'Plugins' screen in WordPress.
-3. Enter the Product Code under the SKU from either Variable or Simple products.
+3. Enter the Product Code from either Variable or Simple products under the SKU.
 
-== Technical Details for Release 1.4.9 ==
+== Technical Details for Release 1.5.0 ==
 
 Load time: 0.294 s; Memory usage: 3.63 MiB
-PHP up to tested version: 8.3.15
-MySQL up to tested version: 8.4.3
+PHP up to tested version: 8.3.17
+MySQL up to tested version: 8.4.4
 MariaDB up to tested version: 11.8.0
-cURL up to tested version: 8.11.1, OpenSSL/3.4.0
+cURL up to tested version: 8.12.0, OpenSSL/3.4.1
 PHP 7.4, 8.0, 8.1, 8.2, and 8.3 compliant. Not tested on 8.4 yet.
 
 == Using in Multisite Installation ==
 
-1. Extract the zip file contents in the wp-content/mu-plugins/ directory of your WordPress installation. (This is not created by default. You must create it in the wp-content folder.) The 'mu' does not stand for multi-user like it did for WPMU, it stands for 'must-use' as any code placed in that folder will run without needing to be activated.
+1. Extract the zip file contents into the wp-content/mu-plugins/ directory of your WordPress installation. (This is not created by default. You must create it in the wp-content folder.) The 'mu' does not stand for multi-user as it did for WPMU; it stands for 'must-use,' as any code placed in that folder will run without needing to be activated.
 2. Access the Plugins settings panel named 'Product Code for WooCommerce' under options.
-3. Enter the Product Code under the SKU from either Variable or Simple products.
+3. Enter the Product Code from either Variable or Simple products under the SKU.
 
 == Configuration with Relevanssi plugin ==
 
@@ -131,9 +131,15 @@ Please click the following link to check the current stability of this plugin:
 
 == Upgrade Notice ==
 
-None to report as of the release version
+There is none to report as of the release version.
 
 == Changelog ==
+
+1.5.0 03/01/2025
+- Added: Update allows plugin feedback functionality.
+- Updated donation link to Zeffy 
+- Assure compliance with WordPress 6.7.2
+- Assure compliance with WooCommerce 9.7.0
 
 1.4.9 01/11/25
 - Added: Update language file for Product Code Color.
@@ -141,8 +147,8 @@ None to report as of the release version
 
 1.4.8 12/27/24
 - Fixed: Issue where the product code was not displaying on the Quick View modal
-- Added: Support for hiding product codes using the short code 
-- Added: Option to display product shelf location only on the backend (order page) while hidden on frontend
+- Added: Support for hiding product codes using the shortcode 
+- Added: Option to display product shelf location only on the backend (order page) while hidden on the frontend
 - Added: Option to customize the color of the product code.
 - Assure compliance with WordPress 6.7.1
 - Assure compliance with WooCommerce 9.5.1
@@ -167,19 +173,19 @@ None to report as of the release version
 - Assure compliance with WooCommerce 8.3.1
 
 1.4.3 10/17/23
-- Make product code column sortable
+- Make the product code column sortable
 – Add German translation
 - Assure compliance with WooCommerce 8.2.1
 
 1.4.2 10/13/23
-- Adjust code field for diverse and longer entries
+- Adjust the code field for diverse and longer entries
 - Assure compliance with WordPress 6.3.2
 - Assure compliance with WooCommerce 8.2.0
 
 1.4.1 09/14/23
-- Added an option for hiding product code on user-side
-- Numerious settings composition changes
-- Numerious text edits and tooltip changes
+- Added an option for hiding product code on the user side
+- Numerous settings composition changes
+- Numerous text edits and tooltip changes
 - Update all language files
 - Assure compliance with WordPress 6.3.1
 - Assure compliance with WooCommerce 8.1.0
@@ -209,13 +215,13 @@ None to report as of the release version
 - Assure compliance with WooCommerce 6.5.1
 
 1.3.2 02/23/22
-- Fixed extra space for variable product product data in quick edit
-- Enable editing product column title in settings panel.
+- Fixed extra space for variable product data in quick edit
+- Enable editing of product column titles in the settings panel.
 - Assure compliance with WordPress 5.9.1
 - Assure compliance with WooCommerce 6.2.1
 
 1.3.1 02/11/22
-- Added product code field to Woocommerce Quick Edit
+- Added product code field to WooCommerce Quick Edit
 - Added product code 2 column in admin products panel if enabled
 - Added allowing the custom title to appear on Quick Edit
 - Assure compliance with WooCommerce 6.2.0
@@ -237,21 +243,21 @@ None to report as of the release version
 
 1.2.6 08/24/21
 - Fixed search results for variable products
-- Fixed bullets removed PHP and email conflict
+- Fixed bullets, removed PHP and email conflict
 - Updates for WordPress 5.8
 - Assure compliance with WooCommerce 5.6.0
 
 1.2.5 05/13/21
-- Fixed css on order received page.
-- Fixed a typo in enqueue script function
+- Fixed CSS on the order received page.
+- Fixed a typo in the enqueue script function
 - Updates for WordPress 5.7.2
 - Assure compliance with WooCommerce 5.3.0
 
 1.2.4 12/31/20
-- Fixed export of products with product code meta fields
+- Fixed export of products with product code metafields
 - Added setting to apply structure data property for product code
-- Added 'N/A' for the structured data if product code is not set for any product
-- Added shortcode [pcfw_display_product_code] to display product code on single product and custom pages
+- Added 'N/A' for the structured data if the product code is not set for any product
+- Added shortcode [pcfw_display_product_code] to display product code on a single product and custom pages
 - Remove useless Import/Export Settings option
 
 1.2.3 12/13/20
@@ -287,8 +293,8 @@ None to report as of the release version
 - Add search module for Relevanssi search
 
 1.0.8 04/02/20
-- Add search compliance including third party plugins
-- Add search module for SearchWP search
+- Add search compliance, including third-party plugins
+- Add a search module for SearchWP search
 - Add search module for Ajax Search Pro search
 - Updates for WordPress 5.4
 - Assure compliance with WooCommerce 4.0.1
@@ -296,14 +302,14 @@ None to report as of the release version
 1.0.7 02/02/20
 - Updates for WordPress 5.3.2
 - Assure compliance with WooCommerce 3.9.2
-- Fix missing Product Code label upon install
+- Fix missing Product Code label upon installation
 
 1.0.6 12/11/19
 - Updates for WordPress 5.3
 - Assure compliance with WooCommerce 3.8.1
 - Remove composer.json dependencies
 - Add submenu access to setup
-- Add ability to edit the field title
+- Add the ability to edit the field title
 - Overall composition and text edits
 - Fix language POTS not loading
 

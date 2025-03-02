@@ -7,7 +7,7 @@
  * Plugin Name:          Product Code for WooCommerce
  * Plugin URI:           http://wordpress.org/plugins/product-code-for-woocommerce
  * Description:          Plugin provides a unique internal product identifier in addition to the GTIN, EAN, SKU and UPC throughout the order process. A secondary product code field can be activated from setup.
- * Version:              1.4.9
+ * Version:              1.5.0
  * Author:               Artios Media
  * Author URI:           http://www.artiosmedia.com
  * Assisting Developer:  Arafat Rahman
@@ -16,9 +16,9 @@
  * License URI:          http://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain:          product-code-for-woocommerce
  * Domain Path:          /languages
- * Tested up to:         6.7.1
+ * Tested up to:         6.7.2
  * WC requires at least: 6.5.0
- * WC tested up to:      9.5.2
+ * WC tested up to:      9.7.0
  * PHP tested up to:     8.3.13
  */
 
@@ -32,10 +32,9 @@ define('PRODUCT_CODE_COLOR', '_product_code_color');
 
 
 define('PRODUCT_CODE_TEMPLATE_PATH', __DIR__ . '/templates');
-define('PRODUCT_CODE_PAYPAL_ID', 'E7LS2JGFPLTH2');
 
-define('PRODUCT_CODE_VERSION', '1.4.9');
-define('PRODUCT_CODE_DB_VERSION', '1.4.9');
+define('PRODUCT_CODE_VERSION', '1.5.0');
+define('PRODUCT_CODE_DB_VERSION', '1.5.0');
 
 load_plugin_textdomain('product-code-for-woocommerce', false, basename(dirname(__FILE__)) . '/languages');
 
@@ -72,7 +71,7 @@ register_activation_hook(__FILE__, function () {
 
 	add_option('product_code_text', 'Product Code');
 
-	update_option('product_code_notice_dismiss', gmdate('Y-m-d', strtotime('+30 days')));
+	//update_option('product_code_notice_dismiss', gmdate('Y-m-d', strtotime('+30 days')));
 });
 
 register_deactivation_hook(__FILE__, function () {
@@ -92,7 +91,7 @@ add_action('admin_init', function () {
 
 
 	if (PRODUCT_CODE_VERSION === '1.0.6' && !$upgrade_db) {
-		update_option('product_code_notice_dismiss', gmdate('Y-m-d', strtotime('+30 days')));
+		//update_option('product_code_notice_dismiss', gmdate('Y-m-d', strtotime('+30 days')));
 		update_option('product_code_update', true);
 	}
 
