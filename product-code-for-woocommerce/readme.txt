@@ -4,9 +4,9 @@ Contributors: Artiosmedia, steveneray, arafatrahmanbd
 Donate link: https://www.zeffy.com/en-US/donation-form/your-donation-makes-a-difference-6
 Tags: product code, product number, bin number, warehouse tracking, order number
 Requires at least: 4.6
-Tested up to: 6.7.2
-Version: 1.5.0
-Stable tag: 1.5.0
+Tested up to: 6.8.1
+Version: 1.5.1
+Stable tag: 1.5.1
 Requires PHP: 7.4.33
 License: GPLv3 or later license and included
 URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -21,9 +21,9 @@ Throughout the order process, a unique product code is often added in addition t
 
 Simply install, enter your product codes within each product post (variation or single), and publish. There is nothing more to it than that! If you don't want customers to be able to see the unique product code, the user-side display can be turned off in setup. The field label can also be easily changed in setup to read ISBN, Bin Number, Stock Number, EAN, or JAN. Any value can be created and entered as a single new field.
 
-The added fields are compliant with mappable data import and export schemes. This exact compliance allows the fields to be included in a Google Merchant product feed using custom mapping. It also provides support for Schema.org/Product with an option to choose the property name (GTIN, EAN, UPC, ISBN) to set inside the structured data.
+The added fields are compliant with mappable data import and export schemes. This exact compliance allows the fields to be included in a Google Merchant product feed using custom mapping. It also supports Schema.org/Product with an option to choose the property name (GTIN, EAN, UPC, ISBN) to set inside the structured data.
 
-You can also search product codes using the WordPress default search from the user side as well as from the administrator WooCommerce product list page on the backend. It is compatible to search product codes using the popular <a href="https://wordpress.org/plugins/relevanssi/" target="_blank">Relevanssi</a>, <a href="https://searchwp.com/" target="_blank">SearchWP</a> and, <a href="https://ajaxsearchpro.com/" target="_blank">Ajax Search Pro</a>.
+You can also search product codes using the WordPress default search from the user side and from the administrator WooCommerce product list page on the backend. It is compatible to search product codes using the popular <a href="https://wordpress.org/plugins/relevanssi/" target="_blank">Relevanssi</a>, <a href="https://searchwp.com/" target="_blank">SearchWP</a> and, <a href="https://ajaxsearchpro.com/" target="_blank">Ajax Search Pro</a>.
 
 The plugin's languages include English, Spanish, French, German, and Russian.
 
@@ -37,13 +37,13 @@ As of <strong>version 1.4.1</strong>, an administrator can choose to hide the de
 2. Activate the plugin through the 'Plugins' screen in WordPress.
 3. Enter the Product Code from either Variable or Simple products under the SKU.
 
-== Technical Details for Release 1.5.0 ==
+== Technical Details for Release 1.5.1 ==
 
 Load time: 0.294 s; Memory usage: 3.63 MiB
-PHP up to tested version: 8.3.17
-MySQL up to tested version: 8.4.4
-MariaDB up to tested version: 11.8.0
-cURL up to tested version: 8.12.0, OpenSSL/3.4.1
+PHP up to tested version: 8.3.21
+MySQL up to tested version: 8.4.5
+MariaDB up to tested version: 12.0.0
+cURL up to tested version: 8.13.0, OpenSSL/3.5.0
 PHP 7.4, 8.0, 8.1, 8.2, and 8.3 compliant. Not tested on 8.4 yet.
 
 == Using in Multisite Installation ==
@@ -134,6 +134,12 @@ Please click the following link to check the current stability of this plugin:
 There is none to report as of the release version.
 
 == Changelog ==
+
+
+1.5.1 05/08/2025
+- Added nonce validation using check_ajax_referer to prevent Cross-Site Request Forgery (CSRF) attacks for AJAX requests.
+- Assure compliance with WordPress 6.8.1
+- Assure compliance with WooCommerce 9.8.4
 
 1.5.0 03/01/2025
 - Added: Update allows plugin feedback functionality.

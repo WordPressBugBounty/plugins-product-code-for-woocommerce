@@ -33,6 +33,7 @@ class PCFW_Admin_Settings {
 		// Will be removed in next update
 		add_action('wp_ajax_product_code_update_database', array($this, 'update_database'));
 
+
 		//add product code to admin column
 		add_action('manage_edit-product_columns', array($this, 'product_column'));
 		add_action('manage_posts_custom_column', array($this, 'product_column_value'));
@@ -69,6 +70,10 @@ class PCFW_Admin_Settings {
 	}
 
 	public function update_database() {
+
+		// Check if the user has the required capability
+		check_ajax_referer('product_code_update_nonce', '_ajax_nonce');
+
 		if (current_user_can('manage_options')) {
 			global $wpdb;
 

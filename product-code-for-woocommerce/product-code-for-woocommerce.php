@@ -7,7 +7,7 @@
  * Plugin Name:          Product Code for WooCommerce
  * Plugin URI:           http://wordpress.org/plugins/product-code-for-woocommerce
  * Description:          Plugin provides a unique internal product identifier in addition to the GTIN, EAN, SKU and UPC throughout the order process. A secondary product code field can be activated from setup.
- * Version:              1.5.0
+ * Version:              1.5.1
  * Author:               Artios Media
  * Author URI:           http://www.artiosmedia.com
  * Assisting Developer:  Arafat Rahman
@@ -16,10 +16,10 @@
  * License URI:          http://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain:          product-code-for-woocommerce
  * Domain Path:          /languages
- * Tested up to:         6.7.2
+ * Tested up to:         6.8.1
  * WC requires at least: 6.5.0
- * WC tested up to:      9.7.0
- * PHP tested up to:     8.3.13
+ * WC tested up to:      9.8.4
+ * PHP tested up to:     8.3.21
  */
 
 namespace Artiosmedia\WC_Product_Code;
@@ -120,11 +120,18 @@ add_action('admin_init', function () {
 	// If plugin version is less then 1.2.0 then upgrade and if not update database after version upgrade still display the notice.
 	if (( $plugin_options['version'] < '1.2.2' && !$upgrade_db ) || !empty($results)) {
 		add_action('admin_notices', function () {
-			$url = admin_url('admin-ajax.php');
+			
+			$url = wp_nonce_url(
+				admin_url('admin-ajax.php?action=product_code_update_database'),
+				'product_code_update_nonce',
+				'_ajax_nonce'
+			);
+
+
 			$notice_text = __('<strong>NOTICE! Product Code For WooCommerce</strong> must update your database to modify meta fields. Consider backing up database first.', 'product-code-for-woocommerce');
 			?>
 			<div class="warning notice">
-				<p><?php echo wp_kses_post($notice_text); ?> <a class="button button-primary" href="<?php echo esc_url($url); ?>?action=product_code_update_database" target="_blank"><?php esc_html_e('Update Now', 'product-code-for-woocommerce'); ?></a></p>
+				<p><?php echo wp_kses_post($notice_text); ?> <a class="button button-primary" href="<?php echo esc_url($url); ?>" target="_blank"><?php esc_html_e('Update Now', 'product-code-for-woocommerce'); ?></a></p>
 			</div>
 <?php
 		});
