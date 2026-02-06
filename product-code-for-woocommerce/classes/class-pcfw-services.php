@@ -22,14 +22,8 @@ class PCFW_Services {
 		add_action('woocommerce_product_meta_start', [$this, 'display_product_code']);
 
 		//add_action( 'woocommerce_product_meta_start', [ $this, 'display_product_code_second' ] );
-		add_filter('woocommerce_get_sections_products', [$this, 'add_woocommerce_settings']);
-		add_filter('woocommerce_get_settings_products', [$this, 'add_product_code_settings'], 10, 2);
 		add_filter('body_class', [$this, 'PCFW_add_body_class']);
 
-		//add_filter( 'woocommerce_get_settings_products', [ $this, 'add_import_export' ], 10, 2 );
-		add_action('woocommerce_admin_field_file', [$this, 'add_admin_field_file']);
-		add_action('woocommerce_admin_field_button', [$this, 'add_admin_field_button']);
-		add_action('admin_menu', array($this, 'add_to_wc_submenu'), 90);
 		add_filter('plugin_row_meta', [$this, 'plugin_row_filter'], 10, 3);
 		add_action('wp_ajax_product_code', [$this, 'ajax_get_product_code']);
 		add_action('wp_ajax_nopriv_product_code', [$this, 'ajax_get_product_code']);
@@ -66,10 +60,8 @@ class PCFW_Services {
 		global $post;
 		if (( !empty($post) && 'product' == $post->post_type ) || is_wc_endpoint_url('order-pay') || is_wc_endpoint_url('order-received') || is_wc_endpoint_url('view-order')) :
 
-			//wp_enqueue_script( 'product-code-frontend', PRODUCT_CODE_URL . '/assets/js/stl_custom.js', [ 'wc-add-to-cart-variation', 'jquery' ]);
-
 			wp_enqueue_style('product-code-frontend', PRODUCT_CODE_URL . '/assets/css/single-product.css');
-			wp_enqueue_script('product-code-for-woocommerce', PRODUCT_CODE_URL . '/assets/js/editor.js', ['jquery'], PRODUCT_CODE_VERSION);
+			wp_enqueue_script('product-code-for-woocommerce', PRODUCT_CODE_URL . '/assets/js/editor.js', ['jquery', 'wc-add-to-cart-variation'], PRODUCT_CODE_VERSION);
 			wp_localize_script('product-code-for-woocommerce', 'PRODUCT_CODE', ['ajax' => admin_url('admin-ajax.php'), 'HIDE_EMPTY' => get_option('product_code_hide_empty_field')]);
 		endif;
 	}
@@ -77,6 +69,11 @@ class PCFW_Services {
 	public function add_css() {
 		wp_register_style('product-code-backend', PRODUCT_CODE_URL . '/assets/css/single-product.css', [], PRODUCT_CODE_VERSION, 'all');
 		wp_enqueue_style('product-code-backend');
+		
+		// Hide WooCommerce GTIN field if option is enabled
+		if ('yes' === get_option('pcfw_hide_wc_gtin_field', 'yes')) {
+			echo '<style>._global_unique_id_field { display: none !important; }</style>';
+		}
 	}
 
 	public function plugin_row_filter($links, $plugin_file, $plugin_data) {
@@ -108,14 +105,17 @@ class PCFW_Services {
 	}
 
 	public function add_code_to_cart_product($cart_item_data, $product_id, $variation_id) {
+		// Ensure $cart_item_data is always an array
+		if (!is_array($cart_item_data)) {
+			$cart_item_data = array();
+		}
+		
 		$id = $variation_id ? $variation_id : $product_id;
 		$simple_field_name = PRODUCT_CODE_FIELD_NAME;
-		$color = get_post_meta($id, PRODUCT_CODE_COLOR, true);
 		if (get_option('product_code') == 'yes') :
 			$simple_value = get_post_meta($id, $simple_field_name, true);
 			if ($simple_value) {
-				$formatted_value = '<span style="color: ' . esc_attr($color) . ' !important;">' . do_shortcode($simple_value) . '</span>';
-				$cart_item_data[$simple_field_name] = $formatted_value;
+				$cart_item_data[$simple_field_name] = $simple_value;
 			}
 		endif;
 		if (get_option('product_code_second') == 'yes' && get_option('product_code_second_show') == 'yes') :
@@ -124,28 +124,33 @@ class PCFW_Services {
 			$simple_field_name = PRODUCT_CODE_FIELD_NAME_SECOND;
 			$simple_value = get_post_meta($id, $simple_field_name, true);
 			if ($simple_value) {
-				$formatted_value = '<span style="color: ' . esc_attr($color) . ' !important;">' . do_shortcode($simple_value) . '</span>';
-				$cart_item_data[$simple_field_name] = $formatted_value;
+				$cart_item_data[$simple_field_name] = $simple_value;
 			}
 		endif;
-
-		//error_log(print_r($cart_item_data,true));
 
 		return $cart_item_data;
 	}
 	public function retrieve_product_code_in_cart($cart_item_data, $cart_item) {
+		// Ensure $cart_item_data is always an array
+		if (!is_array($cart_item_data)) {
+			$cart_item_data = array();
+		}
+		
+		// Hide from customer-facing cart and checkout if option enabled
+		if ('yes' === get_option('pcfw_hide_from_customer_orders', 'no') && !is_admin()) {
+			return $cart_item_data;
+		}
+		
 		$simple_field_name = PRODUCT_CODE_FIELD_NAME;
 		$txt = get_option('product_code_text', '');
 		$cart_data = [];
 		$product_id = $cart_item['product_id'];
-		$color = get_post_meta($product_id, PRODUCT_CODE_COLOR, true);
 
 		if ('yes' == get_option('product_code')) :
 			if (isset($cart_item[$simple_field_name])) {
-				$formatted_value = '<span style="color: ' . esc_attr($color) . ' !important;">' . do_shortcode($cart_item[$simple_field_name]) . '</span>';
 				$cart_data[] = array(
 					'name'	 => $txt ? $txt : __('Product Code', 'product-code-for-woocommerce'),
-					'value'	 => $formatted_value,
+					'value'	 => $cart_item[$simple_field_name],
 				);
 			}
 		endif;
@@ -155,18 +160,15 @@ class PCFW_Services {
 			$simple_field_name = PRODUCT_CODE_FIELD_NAME_SECOND;
 			$txt = get_option('product_code_text_second', '');
 
-			// $cart_data = [];
 			if (isset($cart_item[$simple_field_name])) {
-				$formatted_value = '<span style="color: ' . esc_attr($color) . ' !important;">' . do_shortcode($cart_item[$simple_field_name]) . '</span>';
 
 				$cart_data[] = array(
 					'name'	 => $txt ? $txt : __('Product Code', 'product-code-for-woocommerce'),
-					'value'	 => $formatted_value,
+					'value'	 => $cart_item[$simple_field_name],
 				);
 			}
 		endif;
 
-		//error_log(print_r($cart_data,true));
 		return array_merge($cart_item_data, $cart_data);
 	}
 	public function process_order_item($item, $cart_item_key, $values, $order) {
@@ -183,6 +185,33 @@ class PCFW_Services {
 	}
 
 	public function get_formatted_order_item_meta_data($formatted_meta, $item) {
+		// Hide from customer-facing order pages if option enabled (still shows in admin)
+		if ('yes' === get_option('pcfw_hide_from_customer_orders', 'no') && !is_admin()) {
+			// Filter out product code entries from the meta
+			$txt = get_option('product_code_text', '');
+			$txt_second = get_option('product_code_text_second', '');
+			$label_primary = $txt ? $txt : __('Product Code', 'product-code-for-woocommerce');
+			$label_second = $txt_second ? $txt_second : __('Product Code', 'product-code-for-woocommerce');
+			
+			foreach ($formatted_meta as $idx => $meta) {
+				// Remove by field name constant
+				if ($meta->key === PRODUCT_CODE_FIELD_NAME || $meta->key === PRODUCT_CODE_FIELD_NAME_SECOND) {
+					unset($formatted_meta[$idx]);
+					continue;
+				}
+				// Remove by label (process_order_item saves meta with label as key)
+				if ($meta->key === $label_primary || $meta->key === $label_second) {
+					unset($formatted_meta[$idx]);
+					continue;
+				}
+				// Also check display_key
+				if (isset($meta->display_key) && ($meta->display_key === $label_primary || $meta->display_key === $label_second)) {
+					unset($formatted_meta[$idx]);
+				}
+			}
+			return $formatted_meta;
+		}
+		
 		$field_name	 = PRODUCT_CODE_FIELD_NAME;
 
 		$txt		 = get_option('product_code_text', '');
@@ -275,182 +304,6 @@ class PCFW_Services {
 		return false;
 	}
 
-	public function add_woocommerce_settings($sections) {
-		$sections['product_code_settings'] = __('Product Code', 'product-code-for-woocommerce');
-		return $sections;
-	}
-
-	public function add_to_wc_submenu() {
-		add_submenu_page('woocommerce', __('Product Code', 'product-code-for-woocommerce'), __('Product Code', 'product-code-for-woocommerce'), 'manage_options', 'wc_product_code', function () {
-			printf("<script>window.location='%s'</script>", esc_url_raw(admin_url('admin.php?page=wc-settings&tab=products&section=product_code_settings')));
-		});
-	}
-
-	public function add_product_code_settings($settings, $current_section) {
-		if ('product_code_settings' == $current_section) {
-			$settings_slider	 = array();
-
-			// Add Title to the Settings
-			$settings_slider[]	 = array(
-				'name'	 => __('Product Code Settings', 'product-code-for-woocommerce'),
-				'type'	 => 'title',
-				'id'	 => 'product_code'
-			);
-
-			// Add first checkbox option
-			$settings_slider[] = array(
-				'name'	 => __('Show Product Code', 'product-code-for-woocommerce'),
-				'id'	 => 'product_code',
-				'type'	 => 'checkbox',
-				'css'	 => 'min-width:300px;',
-				'desc'	 => __('Display product code on user side on the products posts, checkout, cart, and receipts.', 'product-code-for-woocommerce'),
-			);
-
-			$settings_slider[]	 = array(
-				'name'	 => __('Hide Product Code', 'product-code-for-woocommerce'),
-				'id'	 => 'hide_product_code_on_user_side',
-				'type'	 => 'checkbox',
-				'css'	 => 'min-width:300px;',
-				'desc'	 => __('Hide product code on user-side product posts only.', 'product-code-for-woocommerce'),
-			);
-
-			$settings_slider[]	 = array(
-				'name'		 => __('Field Title', 'product-code-for-woocommerce'),
-				'desc_tip'	 => true,
-				'id'		 => 'product_code_text',
-				'type'		 => 'text',
-				'default'	 => 'Product Code',
-				'desc'		 => __('Field title can be edited to read anything, no longer than 12 characters including spaces.', 'product-code-for-woocommerce'),
-			);
-
-			$settings_slider[]	 = array(
-				'name'		 => __('Products Column Title', 'product-code-for-woocommerce'),
-				'desc_tip'	 => true,
-				'id'		 => 'product_code_quik_edit_text',
-				'type'		 => 'text',
-				'default'	 => 'Code',
-				'desc'		 => __('Admin products column title can be edited to read anything, no longer than 12 characters including spaces.', 'product-code-for-woocommerce'),
-			);
-
-			$settings_slider[]	 = array(
-				'name'	 => __('Enable Second Product Code', 'product-code-for-woocommerce'),
-				'id'	 => 'product_code_second_show',
-				'type'	 => 'checkbox',
-				'css'	 => 'min-width:300px;',
-				'desc'	 => __('Display second product code field.', 'product-code-for-woocommerce'),
-			);
-
-			$settings_slider[]	 = array(
-				'name'	 => __('Show Second Product Code', 'product-code-for-woocommerce'),
-				'id'	 => 'product_code_second',
-				'type'	 => 'checkbox',
-				'css'	 => 'min-width:300px;',
-				'desc'	 => __('Display product code on user side on the products posts, checkout, cart, and receipts.', 'product-code-for-woocommerce'),
-			);
-
-			$settings_slider[]	 = array(
-				'name'	 => __('Hide Second Product Code', 'product-code-for-woocommerce'),
-				'id'	 => 'hide_second_product_code_on_user_side',
-				'type'	 => 'checkbox',
-				'css'	 => 'min-width:300px;',
-				'desc'	 => __('Hide second product code on user-side product posts only.', 'product-code-for-woocommerce'),
-			);
-
-			$settings_slider[]	 = array(
-				'name'		 => __('Second Field Title', 'product-code-for-woocommerce'),
-				'desc_tip'	 => true,
-				'id'		 => 'product_code_text_second',
-				'type'		 => 'text',
-				'default'	 => 'Product Code 2',
-				'desc'		 => __('Field title can be edited to read anything, no longer than 14 characters including spaces.', 'product-code-for-woocommerce'),
-			);
-
-			$settings_slider[]	 = array(
-				'name'		 => __('Second Products Column Title', 'product-code-for-woocommerce'),
-				'desc_tip'	 => true,
-				'id'		 => 'product_code_quik_edit_text_second',
-				'type'		 => 'text',
-				'default'	 => 'Code 2',
-				'desc'		 => __('Admin second products column title can be edited to read anything, no longer than 14 characters including spaces.', 'product-code-for-woocommerce'),
-			);
-
-			$settings_slider[]	 = array(
-				'name'	 => __('Hide Field When Empty', 'product-code-for-woocommerce'),
-				'id'	 => 'product_code_hide_empty_field',
-				'type'	 => 'checkbox',
-				'css'	 => 'min-width:300px;',
-				'desc'	 => __('Hide primary and secondary user side display when field is left blank.', 'product-code-for-woocommerce'),
-			);
-
-			$settings_slider[] = array(
-				'name'	 => __('Enable Structured Data Product', 'product-code-for-woocommerce'),
-				'id'	 => 'pcfw_structure_data',
-				'type'	 => 'checkbox',
-				'css'	 => 'min-width:300px;',
-				'desc'	 => __('Apply structure data property set on the product code.', 'product-code-for-woocommerce'),
-			);
-
-			$settings_slider[]	 = array(
-				'name'		 => __('Structured Data Product', 'product-code-for-woocommerce'),
-				'desc'		 => __('Choose the structured data property set when using a trade number for schema compliance.', 'product-code-for-woocommerce'),
-				'id'		 => 'pcfw_structured_data_field',
-				'default'	 => 'gtin',
-				'type'		 => 'select',
-				'options'	 => array(
-					'gtin'	 => 'gtin',
-					'gtin8'	 => 'gtin8',
-					'gtin12' => 'gtin12',
-					'gtin13' => 'gtin13',
-					'gtin14' => 'gtin14',
-					'isbn'	 => 'isbn',
-					'mpn'	 => 'mpn',
-				),
-
-				'desc_tip'	 => true,
-			);
-
-			$settings_slider[]	 = array(
-				'name'	 => __('Hide product codes for customers', 'product-code-for-woocommerce'),
-				'id'	 => 'product_code_for_admin',
-				'type'	 => 'checkbox',
-				'css'	 => 'min-width:300px;',
-				'desc'	 => __('Hide product codes for customers on the front end of your store.', 'product-code-for-woocommerce'),
-			);
-
-			$settings_slider[] = array('type' => 'sectionend', 'id' => 'product_code_settings');
-			return $settings_slider;
-		}
-		return $settings;
-	}
-
-	public function add_admin_field_file($value) {
-		?>
-
-		<tr valign="top">
-			<th scope="row" class="titledesc">
-				<label for="<?php echo esc_attr($value['id']); ?>"><?php echo esc_html($value['title']); ?></label>
-			</th>
-			<td class="forminp forminp-<?php echo esc_attr($value['type']); ?>">
-				<input name="<?php echo esc_attr($value['name']); ?>" id="<?php echo esc_attr($value['id']); ?>" type="file" style="<?php echo esc_attr($value['css']); ?>" value="<?php echo esc_attr($value['name']); ?>" class="<?php echo esc_attr($value['class']); ?>" />
-			</td>
-		</tr>
-
-	<?php
-	}
-	public function add_admin_field_button($value) {
-		?>
-
-		<tr valign="top">
-			<th scope="row" class="titledesc">
-				<label for="<?php echo esc_attr($value['id']); ?>"><?php echo esc_html($value['title']); ?></label>
-			</th>
-			<td class="forminp forminp-<?php echo esc_attr($value['type']); ?>">
-				<a target="_blank" href="<?php echo esc_attr($value['href']); ?>" name="<?php echo esc_attr($value['name']); ?>" id="<?php echo esc_attr($value['id']); ?>" style="<?php echo esc_attr($value['css']); ?>" value="<?php echo esc_attr($value['name']); ?>" class="<?php echo esc_attr($value['class']); ?>"><?php echo esc_attr($value['name']); ?></a>
-			</td>
-		</tr>
-
-<?php
-	}
 
 	public function ajax_get_product_code() {
 		$post_data = filter_input_array(INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS);

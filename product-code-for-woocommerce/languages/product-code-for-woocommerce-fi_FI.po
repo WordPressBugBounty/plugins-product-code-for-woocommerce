@@ -4,8 +4,8 @@ msgstr ""
 "POT-Creation-Date: 2026-01-12 22:30+0000\n"
 "PO-Revision-Date: 2026-01-12 22:30-0500\n"
 "Last-Translator: Artios Media\n"
-"Language-Team: German\n"
-"Language: de_DE\n"
+"Language-Team: Finnish\n"
+"Language: fi_FI\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -13,217 +13,217 @@ msgstr ""
 "X-Generator: Poedit 3.5\n"
 
 msgid "Product code"
-msgstr "Produktcode"
+msgstr "Tuotekoodi"
 
 msgid "Successfully Updated Redirecting back...."
-msgstr "Erfolgreich aktualisiert. Weiterleitung..."
+msgstr "Päivitys onnistui. Ohjataan takaisin..."
 
 msgid "Failed to update please retry later, Redirecting back... "
-msgstr "Aktualisierung fehlgeschlagen, bitte später erneut versuchen. Weiterleitung..."
+msgstr "Päivitys epäonnistui, yritä myöhemmin. Ohjataan takaisin..."
 
 msgid "%s refers to a company's unique internal product identifier, needed for online product fulfillment."
-msgstr "%s bezieht sich auf die eindeutige interne Produktkennung eines Unternehmens, die für die Online-Auftragsabwicklung erforderlich ist."
+msgstr "%s viittaa yrityksen yksilölliseen sisäiseen tuotetunnisteeseen, jota tarvitaan verkkotilausten käsittelyyn."
 
 msgid "Product code 2"
-msgstr "Produktcode 2"
+msgstr "Tuotekoodi 2"
 
 msgid "Code"
-msgstr "Code"
+msgstr "Koodi"
 
 msgid "Code 2"
-msgstr "Code 2"
+msgstr "Koodi 2"
 
 msgid "View Details"
-msgstr "Details anzeigen"
+msgstr "Näytä tiedot"
 
 msgid "Donation for Homeless"
-msgstr "Spende für Obdachlose"
+msgstr "Lahjoitus kodittomille"
 
 msgid "Product Code"
-msgstr "Produktcode"
+msgstr "Tuotekoodi"
 
 msgid "Product Code for WooCommerce Add-on requires Woocommerce plugin to be installed and activated."
-msgstr "Das Produktcode für WooCommerce Add-on erfordert, dass das WooCommerce-Plugin installiert und aktiviert ist."
+msgstr "Tuotekoodi WooCommercelle -lisäosa vaatii WooCommerce-lisäosan asentamisen ja aktivoinnin."
 
 msgid "Product Code:"
-msgstr "Produktcode:"
+msgstr "Tuotekoodi:"
 
 msgid "Product Code Second:"
-msgstr "Zweiter Produktcode:"
+msgstr "Toinen Tuotekoodi:"
 
 msgid "Settings"
-msgstr "Einstellungen"
+msgstr "Asetukset"
 
 msgid "Settings saved successfully."
-msgstr "Erfolgreich gespeichert."
+msgstr "Tallennettu onnistuneesti."
 
 msgid "Product Code Settings"
-msgstr "Produktcode-Einstellungen"
+msgstr "Tuotekoodin Asetukset"
 
 msgid "Configurations"
-msgstr "Konfigurationen"
+msgstr "Konfiguraatiot"
 
 msgid "Primary Product Code"
-msgstr "Primärer Produktcode"
+msgstr "Ensisijainen Tuotekoodi"
 
 msgid "Enable Product Code"
-msgstr "Produktcode aktivieren"
+msgstr "Ota Tuotekoodi Käyttöön"
 
 msgid "Enable product code display across your store."
-msgstr "Produktcode-Anzeige im Shop aktivieren."
+msgstr "Ota tuotekoodin näyttö käyttöön kaupassasi."
 
 msgid "Master switch. When enabled, codes appear on product pages, cart, checkout, and order receipts."
-msgstr "Hauptschalter. Wenn aktiviert, erscheinen Codes auf Produktseiten, Warenkorb, Kasse und Bestellbelegen."
+msgstr "Pääkytkin. Kun käytössä, koodit näkyvät tuotesivuilla, ostoskorissa, kassalla ja tilausvahvistuksissa."
 
 msgid "Hide on Product Pages"
-msgstr "Auf Produktseiten verbergen"
+msgstr "Piilota Tuotesivuilla"
 
 msgid "Hide from single product pages only."
-msgstr "Nur auf einzelnen Produktseiten verbergen."
+msgstr "Piilota vain yksittäisillä tuotesivuilla."
 
 msgid "Code still appears in cart, checkout, and order receipts."
-msgstr "Code erscheint weiterhin im Warenkorb, an der Kasse und auf Bestellbelegen."
+msgstr "Koodi näkyy edelleen ostoskorissa, kassalla ja tilausvahvistuksissa."
 
 msgid "Hide from Customer Orders"
-msgstr "Vor Kundenbestellungen verbergen"
+msgstr "Piilota Asiakastilauksista"
 
 msgid "Hide from cart, checkout, and order confirmations."
-msgstr "Im Warenkorb, an der Kasse und in Bestellbestätigungen verbergen."
+msgstr "Piilota ostoskorista, kassalta ja tilausvahvistuksista."
 
 msgid "Codes are still saved to orders and visible in admin, invoices, and packing slips. Ideal for internal codes like bin numbers."
-msgstr "Codes werden weiterhin in Bestellungen gespeichert und sind im Admin, auf Rechnungen und Lieferscheinen sichtbar. Ideal für interne Codes wie Lagerplatznummern."
+msgstr "Koodit tallentuvat tilauksiin ja näkyvät hallinnassa, laskuissa ja lähetyslistoissa. Ihanteellinen sisäisille koodeille kuten hyllypaikoille."
 
 msgid "Field Title"
-msgstr "Feldtitel"
+msgstr "Kentän Otsikko"
 
 msgid "Label shown to customers on product pages and in cart. Maximum 12 characters."
-msgstr "Bezeichnung für Kunden auf Produktseiten und im Warenkorb. Maximal 12 Zeichen."
+msgstr "Asiakkaille näytettävä teksti tuotesivuilla ja ostoskorissa. Enintään 12 merkkiä."
 
 msgid "Products Column Title"
-msgstr "Produktspaltentitel"
+msgstr "Tuotesarakkeen Otsikko"
 
 msgid "Column header in admin Products list and Quick Edit. Maximum 12 characters."
-msgstr "Spaltenüberschrift in der Admin-Produktliste und Schnellbearbeitung. Maximal 12 Zeichen."
+msgstr "Sarakkeen otsikko tuotelistassa ja pikamuokkauksessa. Enintään 12 merkkiä."
 
 msgid "Secondary Product Code"
-msgstr "Sekundärer Produktcode"
+msgstr "Toissijainen Tuotekoodi"
 
 msgid "Enable Second Field"
-msgstr "Zweites Feld aktivieren"
+msgstr "Ota Toinen Kenttä Käyttöön"
 
 msgid "Add a second product code field in admin."
-msgstr "Zweites Produktcode-Feld im Admin hinzufügen."
+msgstr "Lisää toinen tuotekoodikenttä hallintaan."
 
 msgid "Adds a second code field to the product editor. Useful for alternate SKUs, supplier codes, or bin locations."
-msgstr "Fügt ein zweites Code-Feld zum Produkteditor hinzu. Nützlich für alternative SKUs, Lieferantencodes oder Lagerplätze."
+msgstr "Lisää toisen koodikentän tuote-editoriin. Hyödyllinen vaihtoehtoisille SKU:ille, toimittajakoodeille tai hyllypaikoille."
 
 msgid "Show Second Code"
-msgstr "Zweiten Code anzeigen"
+msgstr "Näytä Toinen Koodi"
 
 msgid "Display second code to customers."
-msgstr "Zweiten Code für Kunden anzeigen."
+msgstr "Näytä toinen koodi asiakkaille."
 
 msgid "Shows second code on product pages, cart, checkout, and receipts. Leave unchecked to keep it admin-only."
-msgstr "Zeigt zweiten Code auf Produktseiten, Warenkorb, Kasse und Belegen. Deaktiviert lassen für nur Admin-Sichtbarkeit."
+msgstr "Näyttää toisen koodin tuotesivuilla, ostoskorissa, kassalla ja kuiteissa. Jätä tyhjäksi vain hallintanäkymää varten."
 
 msgid "Second Field Title"
-msgstr "Zweiter Feldtitel"
+msgstr "Toisen Kentän Otsikko"
 
 msgid "Label shown to customers on product pages and in cart. Maximum 14 characters."
-msgstr "Bezeichnung für Kunden auf Produktseiten und im Warenkorb. Maximal 14 Zeichen."
+msgstr "Asiakkaille näytettävä teksti tuotesivuilla ja ostoskorissa. Enintään 14 merkkiä."
 
 msgid "Second Column Title"
-msgstr "Zweiter Spaltentitel"
+msgstr "Toisen Sarakkeen Otsikko"
 
 msgid "Column header in admin Products list and Quick Edit. Maximum 14 characters."
-msgstr "Spaltenüberschrift in der Admin-Produktliste und Schnellbearbeitung. Maximal 14 Zeichen."
+msgstr "Sarakkeen otsikko tuotelistassa ja pikamuokkauksessa. Enintään 14 merkkiä."
 
 msgid "Advanced Settings"
-msgstr "Erweiterte Einstellungen"
+msgstr "Lisäasetukset"
 
 msgid "Hide Field When Empty"
-msgstr "Feld ausblenden wenn leer"
+msgstr "Piilota Kenttä Tyhjänä"
 
 msgid "Hide code display when no value is set."
-msgstr "Code-Anzeige verbergen, wenn kein Wert gesetzt ist."
+msgstr "Piilota koodinäyttö kun arvoa ei ole asetettu."
 
 msgid "Prevents \"N/A\" from appearing on product pages when a product has no code assigned."
-msgstr "Verhindert, dass \"K.A.\" auf Produktseiten erscheint, wenn kein Code zugewiesen ist."
+msgstr "Estää \"Ei saatavilla\" näkymisen tuotesivuilla kun tuotteella ei ole koodia."
 
 msgid "Enable Structured Data"
-msgstr "Strukturierte Daten aktivieren"
+msgstr "Ota Rakenteelliset Tiedot Käyttöön"
 
 msgid "Add product code to schema.org markup."
-msgstr "Produktcode zum schema.org-Markup hinzufügen."
+msgstr "Lisää tuotekoodi schema.org-merkintään."
 
 msgid "Includes product code in structured data for search engines. Improves SEO for products with GTINs, ISBNs, or MPNs."
-msgstr "Fügt Produktcode in strukturierte Daten für Suchmaschinen ein. Verbessert SEO für Produkte mit GTINs, ISBNs oder MPNs."
+msgstr "Sisällyttää tuotekoodin rakenteellisiin tietoihin hakukoneille. Parantaa SEO:ta tuotteille joilla on GTIN, ISBN tai MPN."
 
 msgid "Structured Data Type"
-msgstr "Strukturierter Datentyp"
+msgstr "Rakenteellisen Tiedon Tyyppi"
 
 msgid "GTIN: barcodes (UPC/EAN). ISBN: books. MPN: manufacturer part numbers. Choose based on your code type."
-msgstr "GTIN: Barcodes (UPC/EAN). ISBN: Bücher. MPN: Herstellerteilenummern. Wählen Sie basierend auf Ihrem Code-Typ."
+msgstr "GTIN: viivakoodit (UPC/EAN). ISBN: kirjat. MPN: valmistajan osanumerot. Valitse koodityyppisi mukaan."
 
 msgid "Admin Only"
-msgstr "Nur Admin"
+msgstr "Vain Ylläpitäjille"
 
 msgid "Only admins see codes on product pages."
-msgstr "Nur Admins sehen Codes auf Produktseiten."
+msgstr "Vain ylläpitäjät näkevät koodit tuotesivuilla."
 
 msgid "Logged-in administrators will see codes on product pages; all other visitors will not."
-msgstr "Angemeldete Administratoren sehen Codes auf Produktseiten; alle anderen Besucher nicht."
+msgstr "Kirjautuneet ylläpitäjät näkevät koodit tuotesivuilla; muut vierailijat eivät."
 
 msgid "Hide WooCommerce GTIN"
-msgstr "WooCommerce GTIN verbergen"
+msgstr "Piilota WooCommerce GTIN"
 
 msgid "Hide the built-in WooCommerce Unique ID field."
-msgstr "Das integrierte WooCommerce Unique ID-Feld verbergen."
+msgstr "Piilota sisäänrakennettu WooCommerce Yksilöllinen Tunniste -kenttä."
 
 msgid "WooCommerce 9.2+ added a GTIN field. Default is set to 'hide' to avoid confusion."
-msgstr "WooCommerce 9.2+ hat ein GTIN-Feld hinzugefügt. Standard ist 'verbergen', um Verwirrung zu vermeiden."
+msgstr "WooCommerce 9.2+ lisäsi GTIN-kentän. Oletus on 'piilota' sekaannusten välttämiseksi."
 
 msgid "Delete Data on Uninstall"
-msgstr "Daten bei Deinstallation löschen"
+msgstr "Poista Tiedot Poistettaessa"
 
 msgid "WARNING:"
-msgstr "WARNUNG:"
+msgstr "VAROITUS:"
 
 msgid "Permanently deletes all codes when plugin is uninstalled."
-msgstr "Löscht alle Codes dauerhaft, wenn das Plugin deinstalliert wird."
+msgstr "Poistaa kaikki koodit pysyvästi kun lisäosa poistetaan."
 
 msgid "Save Settings"
-msgstr "Speichern"
+msgstr "Tallenna"
 
 msgid "Support"
-msgstr "Support"
+msgstr "Tuki"
 
 msgid "Leave Review"
-msgstr "Bewerten"
+msgstr "Arvostele"
 
 msgid "This plugin is free, but your donation aids orphans:"
-msgstr "Dieses Plugin ist kostenlos, aber Ihre Spende hilft Waisenkindern:"
+msgstr "Tämä lisäosa on ilmainen, mutta lahjoituksesi auttaa orpoja:"
 
 msgid "I Want to Help"
-msgstr "Helfen"
+msgstr "Auttaa"
 
 msgid "<strong>NOTICE! Product Code For WooCommerce</strong> must update your database to modify meta fields. Consider backing up database first."
-msgstr "<strong>HINWEIS! Produktcode für WooCommerce</strong> muss Ihre Datenbank aktualisieren, um Meta-Felder zu ändern. Erstellen Sie zuerst eine Datenbanksicherung."
+msgstr "<strong>HUOMIO! Tuotekoodi WooCommercelle</strong> täytyy päivittää tietokantasi muokatakseen metakenttiä. Harkitse tietokannan varmuuskopiointia ensin."
 
 msgid "Update Now"
-msgstr "Jetzt aktualisieren"
+msgstr "Päivitä Nyt"
 
 msgid "N/A"
-msgstr "K.A."
+msgstr "Ei saatavilla"
 
 msgid "Product Code for WooCommerce"
-msgstr "Produktcode für WooCommerce"
+msgstr "Tuotekoodi WooCommercelle"
 
 msgid "http://wordpress.org/plugins/product-code-for-woocommerce"
 msgstr "http://wordpress.org/plugins/product-code-for-woocommerce"
 
 msgid "Plugin provides a unique internal product identifier in addition to the GTIN, EAN, SKU and UPC throughout the order process. A secondary product code field can be activated from setup."
-msgstr "Das Plugin bietet eine eindeutige interne Produktkennung zusätzlich zu GTIN, EAN, SKU und UPC während des gesamten Bestellvorgangs. Ein sekundäres Produktcode-Feld kann in den Einstellungen aktiviert werden."
+msgstr "Lisäosa tarjoaa yksilöllisen sisäisen tuotetunnisteen GTIN:n, EAN:n, SKU:n ja UPC:n lisäksi koko tilausprosessin ajan. Toissijainen tuotekoodikenttä voidaan aktivoida asetuksista."
 
 msgid "Artios Media"
 msgstr "Artios Media"

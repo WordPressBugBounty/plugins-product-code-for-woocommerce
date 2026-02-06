@@ -1,246 +1,232 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Product Code for WooCommerce\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-08 16:15-0500\n"
-"PO-Revision-Date: 2025-01-01 22:22+0000\n"
-"Last-Translator: \n"
-"Language-Team: French (France)\n"
+"POT-Creation-Date: 2026-01-12 22:30+0000\n"
+"PO-Revision-Date: 2026-01-12 22:30-0500\n"
+"Last-Translator: Artios Media\n"
+"Language-Team: French\n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 3.5\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
-"X-Poedit-WPHeader: product-code-for-woocommerce.php\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;"
-"esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
-"X-Loco-Version: 2.5.7; wp-5.9\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: classes/class-pcfw-admin-settings.php:46 classes/class-pcfw-admin-settings.php:217
-#: classes/class-pcfw-admin-settings.php:331
-#, fuzzy
-#| msgid "Product Code"
 msgid "Product code"
 msgstr "Code produit"
 
-#: classes/class-pcfw-admin-settings.php:64
 msgid "Successfully Updated Redirecting back...."
-msgstr "Mise à jour réussie de la redirection en arrière...."
+msgstr "Mis à jour avec succès. Redirection..."
 
-#: classes/class-pcfw-admin-settings.php:70
 msgid "Failed to update please retry later, Redirecting back... "
-msgstr "Échec à la mise à jour s’il vous plaît réessayer plus tard, rediriger en arrière ... "
+msgstr "Échec de la mise à jour, réessayez plus tard. Redirection..."
 
-#: classes/class-pcfw-admin-settings.php:118 classes/class-pcfw-admin-settings.php:126
-#: templates/variation-field.php:21 templates/variation-field.php:27
-msgid "%s refers to a company’s unique internal product identifier, needed for online product fulfillment."
-msgstr ""
-"%s fait référence à l’identifiant de produit interne unique d’une entreprise, nécessaire à l’exécution "
-"des produits en ligne."
+msgid "%s refers to a company's unique internal product identifier, needed for online product fulfillment."
+msgstr "%s fait référence à l'identifiant interne unique d'un produit d'entreprise, nécessaire pour l'exécution des commandes en ligne."
 
-#: classes/class-pcfw-admin-settings.php:226 classes/class-pcfw-admin-settings.php:337
-#, fuzzy
-#| msgid "Product Code 2"
 msgid "Product code 2"
 msgstr "Code produit 2"
 
-#: classes/class-pcfw-admin-settings.php:235
 msgid "Code"
 msgstr "Code"
 
-#: classes/class-pcfw-admin-settings.php:244
 msgid "Code 2"
 msgstr "Code 2"
 
-#: classes/class-pcfw-services.php:97
 msgid "View Details"
-msgstr "Voir détails"
+msgstr "Voir les détails"
 
-#: classes/class-pcfw-services.php:101
 msgid "Donation for Homeless"
 msgstr "Don pour les sans-abri"
 
-#: classes/class-pcfw-services.php:159
-msgid "Product Code Color"
-msgstr "Code produit Couleur"
-
-#: classes/class-pcfw-services.php:136 classes/class-pcfw-services.php:150
-#: classes/class-pcfw-services.php:163 classes/class-pcfw-services.php:168
-#: classes/class-pcfw-services.php:191 classes/class-pcfw-services.php:213
-#: classes/class-pcfw-services.php:222 classes/class-pcfw-services.php:227
-#: classes/class-pcfw-services.php:244 classes/class-pcfw-services.php:249
-#: templates/product-meta-row.php:25 templates/product-meta-row.php:51
-#: templates/quick-edit-text-field.php:15 templates/quick-edit-text-field.php:23
 msgid "Product Code"
-msgstr "Code produit"
+msgstr "Code Produit"
 
-#: classes/class-pcfw-services.php:260
-msgid "Product Code Settings"
-msgstr "Paramètres du code produit"
-
-#: classes/class-pcfw-services.php:267
-msgid "Show Product Code"
-msgstr "Montrer code produit"
-
-#: classes/class-pcfw-services.php:271 classes/class-pcfw-services.php:305
-msgid "Display product code on user side on the products posts, checkout, cart, and receipts"
-msgstr ""
-"Afficher le code du produit du côté des utilisateurs sur les publications de produits, la caisse, le "
-"panier et les reçus"
-
-#: classes/class-pcfw-services.php:275
-msgid "Field Title"
-msgstr "Titre champ"
-
-#: classes/class-pcfw-services.php:280
-msgid "Field title can be edited to read anything, no longer than 12 characters including spaces."
-msgstr ""
-"Titre champ peut être édité pour lire n'importe quoi, pas plus de 12 caractères comprenant des espaces."
-
-#: classes/class-pcfw-services.php:284
-msgid "Products Column Title"
-msgstr "Titre de la colonne Produits"
-
-#: classes/class-pcfw-services.php:289
-msgid ""
-"Admin products column title can be edited to read anything, no longer than 12 characters including "
-"spaces."
-msgstr ""
-"Le titre de la colonne des produits de l'administrateur peut être modifié pour être lu comme bon vous "
-"semble, sans dépasser 12 caractères, espaces compris."
-
-#: classes/class-pcfw-services.php:293
-msgid "Enable Second Product Code"
-msgstr "Activer 2ème code produit"
-
-#: classes/class-pcfw-services.php:297
-msgid "Display second product code field."
-msgstr "Afficher 2ème champ de code produit."
-
-#: classes/class-pcfw-services.php:301
-msgid "Show Second Product Code"
-msgstr "Afficher 2ème code produit"
-
-#: classes/class-pcfw-services.php:309
-msgid "Second Field Title"
-msgstr "2ème titre du champ"
-
-#: classes/class-pcfw-services.php:314
-msgid "Field title can be edited to read anything, no longer than 14 characters including spaces."
-msgstr ""
-"Titre champ peut être édité pour lire n'importe quoi, pas plus de 14 caractères comprenant des espaces."
-
-#: classes/class-pcfw-services.php:318
-msgid "Second Products Column Title"
-msgstr "Titre de la deuxième colonne de produits"
-
-#: classes/class-pcfw-services.php:323
-msgid ""
-"Admin second products column title can be edited to read anything, no longer than 14 characters "
-"including spaces."
-msgstr ""
-"Le titre de la deuxième colonne de produits de l'administration peut être modifié pour être lu comme bon "
-"vous semble, sans dépasser 14 caractères, espaces compris."
-
-#: classes/class-pcfw-services.php:327
-msgid "Hide Field When Empty"
-msgstr "Cacher champ si vide"
-
-#: classes/class-pcfw-services.php:331
-msgid "Hide primary and secondary user side display when field is left blank."
-msgstr ""
-"Masquer l’affichage latéral principal et secondaire de l’utilisateur lorsque le champ est laissé vide."
-
-#: classes/class-pcfw-services.php:335
-msgid "Enable Structured Data Product"
-msgstr "Activer le produit de données structurées"
-
-#: classes/class-pcfw-services.php:339
-msgid "Apply structure data property set on the product code."
-msgstr "Appliquez l’ensemble de données de structure sur le code produit."
-
-#: classes/class-pcfw-services.php:343
-msgid "Structured Data Product"
-msgstr "Produit de données structuré"
-
-#: classes/class-pcfw-services.php:344
-msgid "Choose the structured data property set when using a trade number for schema compliance."
-msgstr ""
-"Choisissez l’ensemble de données structuré lors de l’utilisation d’un numéro de commerce pour la "
-"conformité aux schémas."
-
-#: classes/class-pcfw-services.php:429
 msgid "Product Code for WooCommerce Add-on requires Woocommerce plugin to be installed and activated."
-msgstr ""
-"Code produit pour WooCommerce Add-on nécessite l'installation et l'activation du plugin Woocommerce."
+msgstr "L'extension Code Produit pour WooCommerce nécessite que le plugin WooCommerce soit installé et activé."
 
-#: classes/class-pcfw-services.php:467
 msgid "Product Code:"
-msgstr "Code du produit:"
+msgstr "Code Produit:"
 
-#: classes/class-pcfw-services.php:468
 msgid "Product Code Second:"
-msgstr "Code du produit Deuxième:"
+msgstr "Deuxième Code Produit:"
 
-#: product-code-for-woocommerce.php:56
 msgid "Settings"
 msgstr "Paramètres"
 
-#: product-code-for-woocommerce.php:116
-msgid ""
-"<strong>NOTICE! Product Code For WooCommerce</strong> must update your database to modify meta fields. "
-"Consider backing up database first."
-msgstr ""
-"<strong>AVIS: Code de produit WooCommerce</strong> doit mettre à jour votre base de données pour "
-"modifier les méta-champs. Envisagez d'abord de sauvegarder la base de données."
+msgid "Settings saved successfully."
+msgstr "Enregistré avec succès."
 
-#: product-code-for-woocommerce.php:116
+msgid "Product Code Settings"
+msgstr "Paramètres Code Produit"
+
+msgid "Configurations"
+msgstr "Configurations"
+
+msgid "Primary Product Code"
+msgstr "Code Produit Principal"
+
+msgid "Enable Product Code"
+msgstr "Activer Code Produit"
+
+msgid "Enable product code display across your store."
+msgstr "Activer l'affichage du code produit dans votre boutique."
+
+msgid "Master switch. When enabled, codes appear on product pages, cart, checkout, and order receipts."
+msgstr "Interrupteur principal. Lorsqu'activé, les codes apparaissent sur les pages produit, panier, paiement et reçus de commande."
+
+msgid "Hide on Product Pages"
+msgstr "Masquer sur Pages Produit"
+
+msgid "Hide from single product pages only."
+msgstr "Masquer uniquement sur les pages produit individuelles."
+
+msgid "Code still appears in cart, checkout, and order receipts."
+msgstr "Le code apparaît toujours dans le panier, le paiement et les reçus de commande."
+
+msgid "Hide from Customer Orders"
+msgstr "Masquer des Commandes Clients"
+
+msgid "Hide from cart, checkout, and order confirmations."
+msgstr "Masquer du panier, paiement et confirmations de commande."
+
+msgid "Codes are still saved to orders and visible in admin, invoices, and packing slips. Ideal for internal codes like bin numbers."
+msgstr "Les codes sont toujours enregistrés et visibles dans l'admin, factures et bons de livraison. Idéal pour les codes internes comme les numéros d'emplacement."
+
+msgid "Field Title"
+msgstr "Titre du Champ"
+
+msgid "Label shown to customers on product pages and in cart. Maximum 12 characters."
+msgstr "Libellé affiché aux clients sur les pages produit et dans le panier. Maximum 12 caractères."
+
+msgid "Products Column Title"
+msgstr "Titre Colonne Produits"
+
+msgid "Column header in admin Products list and Quick Edit. Maximum 12 characters."
+msgstr "En-tête de colonne dans la liste Produits et Édition Rapide. Maximum 12 caractères."
+
+msgid "Secondary Product Code"
+msgstr "Code Produit Secondaire"
+
+msgid "Enable Second Field"
+msgstr "Activer Deuxième Champ"
+
+msgid "Add a second product code field in admin."
+msgstr "Ajouter un deuxième champ de code produit dans l'admin."
+
+msgid "Adds a second code field to the product editor. Useful for alternate SKUs, supplier codes, or bin locations."
+msgstr "Ajoute un deuxième champ de code à l'éditeur de produit. Utile pour les SKUs alternatifs, codes fournisseur ou emplacements."
+
+msgid "Show Second Code"
+msgstr "Afficher Deuxième Code"
+
+msgid "Display second code to customers."
+msgstr "Afficher le deuxième code aux clients."
+
+msgid "Shows second code on product pages, cart, checkout, and receipts. Leave unchecked to keep it admin-only."
+msgstr "Affiche le deuxième code sur les pages produit, panier, paiement et reçus. Décocher pour admin uniquement."
+
+msgid "Second Field Title"
+msgstr "Titre Deuxième Champ"
+
+msgid "Label shown to customers on product pages and in cart. Maximum 14 characters."
+msgstr "Libellé affiché aux clients sur les pages produit et dans le panier. Maximum 14 caractères."
+
+msgid "Second Column Title"
+msgstr "Titre Deuxième Colonne"
+
+msgid "Column header in admin Products list and Quick Edit. Maximum 14 characters."
+msgstr "En-tête de colonne dans la liste Produits et Édition Rapide. Maximum 14 caractères."
+
+msgid "Advanced Settings"
+msgstr "Paramètres Avancés"
+
+msgid "Hide Field When Empty"
+msgstr "Masquer Champ si Vide"
+
+msgid "Hide code display when no value is set."
+msgstr "Masquer l'affichage du code quand aucune valeur n'est définie."
+
+msgid "Prevents \"N/A\" from appearing on product pages when a product has no code assigned."
+msgstr "Empêche \"N/D\" d'apparaître sur les pages produit quand aucun code n'est attribué."
+
+msgid "Enable Structured Data"
+msgstr "Activer Données Structurées"
+
+msgid "Add product code to schema.org markup."
+msgstr "Ajouter le code produit au balisage schema.org."
+
+msgid "Includes product code in structured data for search engines. Improves SEO for products with GTINs, ISBNs, or MPNs."
+msgstr "Inclut le code produit dans les données structurées pour les moteurs de recherche. Améliore le SEO pour les produits avec GTINs, ISBNs ou MPNs."
+
+msgid "Structured Data Type"
+msgstr "Type de Données Structurées"
+
+msgid "GTIN: barcodes (UPC/EAN). ISBN: books. MPN: manufacturer part numbers. Choose based on your code type."
+msgstr "GTIN: codes-barres (UPC/EAN). ISBN: livres. MPN: numéros de pièce fabricant. Choisissez selon votre type de code."
+
+msgid "Admin Only"
+msgstr "Admin Uniquement"
+
+msgid "Only admins see codes on product pages."
+msgstr "Seuls les admins voient les codes sur les pages produit."
+
+msgid "Logged-in administrators will see codes on product pages; all other visitors will not."
+msgstr "Les administrateurs connectés verront les codes sur les pages produit; les autres visiteurs non."
+
+msgid "Hide WooCommerce GTIN"
+msgstr "Masquer GTIN WooCommerce"
+
+msgid "Hide the built-in WooCommerce Unique ID field."
+msgstr "Masquer le champ ID Unique intégré de WooCommerce."
+
+msgid "WooCommerce 9.2+ added a GTIN field. Default is set to 'hide' to avoid confusion."
+msgstr "WooCommerce 9.2+ a ajouté un champ GTIN. Par défaut défini sur 'masquer' pour éviter la confusion."
+
+msgid "Delete Data on Uninstall"
+msgstr "Supprimer Données à la Désinstallation"
+
+msgid "WARNING:"
+msgstr "ATTENTION:"
+
+msgid "Permanently deletes all codes when plugin is uninstalled."
+msgstr "Supprime définitivement tous les codes lors de la désinstallation du plugin."
+
+msgid "Save Settings"
+msgstr "Enregistrer"
+
+msgid "Support"
+msgstr "Support"
+
+msgid "Leave Review"
+msgstr "Avis"
+
+msgid "This plugin is free, but your donation aids orphans:"
+msgstr "Ce plugin est gratuit, mais votre don aide les orphelins:"
+
+msgid "I Want to Help"
+msgstr "Aider"
+
+msgid "<strong>NOTICE! Product Code For WooCommerce</strong> must update your database to modify meta fields. Consider backing up database first."
+msgstr "<strong>AVIS! Code Produit pour WooCommerce</strong> doit mettre à jour votre base de données pour modifier les champs meta. Envisagez de sauvegarder la base de données d'abord."
+
 msgid "Update Now"
-msgstr "Mettez à jour maintenant"
+msgstr "Mettre à Jour"
 
-#: templates/product-meta-row.php:29 templates/product-meta-row.php:55
 msgid "N/A"
-msgstr "N/A"
+msgstr "N/D"
 
-#. Plugin Name of the plugin/theme
 msgid "Product Code for WooCommerce"
-msgstr "Code produit pour WooCommerce"
+msgstr "Code Produit pour WooCommerce"
 
-#. Plugin URI of the plugin/theme
 msgid "http://wordpress.org/plugins/product-code-for-woocommerce"
 msgstr "http://wordpress.org/plugins/product-code-for-woocommerce"
 
-#. Description of the plugin/theme
-msgid ""
-"Plugin provides a unique internal product identifier in addition to the GTIN, EAN, SKU and UPC "
-"throughout the order process. A secondary product code field can be activated from setup."
-msgstr ""
-"Plugin fournit un identificateur de produit interne unique en plus de la GTIN, EAN, SKU et UPC tout au "
-"long du processus de commande. Un champ de code produit secondaire peut être activé à partir de la "
-"configuration."
+msgid "Plugin provides a unique internal product identifier in addition to the GTIN, EAN, SKU and UPC throughout the order process. A secondary product code field can be activated from setup."
+msgstr "Le plugin fournit un identifiant interne unique de produit en plus du GTIN, EAN, SKU et UPC tout au long du processus de commande. Un champ secondaire de code produit peut être activé depuis la configuration."
 
-#. Author of the plugin/theme
 msgid "Artios Media"
 msgstr "Artios Media"
 
-#. Author URI of the plugin/theme
 msgid "http://www.artiosmedia.com"
 msgstr "http://www.artiosmedia.com"
-
-msgid "Hide Product Code"
-msgstr "Masquer le code produit"
-
-msgid "Hide product code on user-side product posts only."
-msgstr "Masquez le code produit sur les publications de produits côté utilisateur uniquement."
-
-msgid "Hide Second Product Code"
-msgstr "Masquer le deuxième code produit"
-
-msgid "Hide second product code on user-side product posts only."
-msgstr "Masquez le deuxième code produit sur les publications de produits côté utilisateur uniquement."

@@ -1,31 +1,5 @@
-/*
-jQuery(document).ready( function( $ ) {
-    $( "#product_code_notice" ).on( "click", ".notice-dismiss", function() {
-        product_code_dismiss_notice(0)
-    })
-
-    $( "#product_code_notice" ).on( "click", "a", function() {
-        product_code_dismiss_notice(1)
-        $( "#product_code_notice .notice-dismiss" ).trigger( "click" )
-    })
-}) 
-
-function product_code_dismiss_notice( is_final ) {
-
-    jQuery.ajax({
-        url : PRODUCT_CODE_ADMIN.ajax,
-        data : { action : "product_code_dismiss_notice", dismissed_final : is_final },
-        type : "POST",
-        dataType : "json",
-        success : function( response ) {
-            console.log(response)
-        }
-    })
-}
-*/
-
 jQuery(document).ready(function($) {
-    // When the X button is clicked
+    // When the X button is clicked on the review notice
     $('.product_code_notice').on('click', '.notice-dismiss', function() {
         jQuery.post(ajaxurl, {
             action: 'product_code_dismiss_notice',
@@ -40,7 +14,7 @@ jQuery(document).ready(function($) {
     });
 });
 
-// Code to add field title for 18 characters
+// Code to add field title for 12/14 characters max
 jQuery( document ).ready( function ($) {
    var first_max_chars = 12;
    var second_max_chars = 14;
@@ -92,5 +66,25 @@ jQuery( document ).ready( function ($) {
            jQuery(this).val(jQuery(this).val().substr(0, second_max_chars));
        }
    });
+
+   // Delete data on uninstall confirmation
+   jQuery('#pcfw_delete_data_on_uninstall').on('change', function() {
+       if (jQuery(this).is(':checked')) {
+           var confirmed = confirm('⚠️ WARNING: Are you sure?\n\nEnabling this option means ALL product code data will be PERMANENTLY DELETED if you uninstall this plugin.\n\nThis action cannot be undone!\n\nClick OK to enable, or Cancel to keep your data safe.');
+           if (!confirmed) {
+               jQuery(this).prop('checked', false);
+           }
+       }
+   });
+
+   // Support button click handler - sends notification email
+   if (typeof pcfw !== 'undefined') {
+       jQuery('.pcfw-support-btn').on('click', function() {
+           jQuery.post(pcfw.ajaxurl, {
+               action: 'pcfw_support_notification',
+               nonce: pcfw.nonce
+           });
+       });
+   }
 
 });

@@ -59,6 +59,12 @@ class PCFW_Admin_Settings {
 
 		wp_localize_script('product-code-admin-generic', 'PRODUCT_CODE_ADMIN', array('ajax' => admin_url('admin-ajax.php')));
 
+		// Localize for support button notification (only needed on settings page but safe to include always)
+		wp_localize_script('product-code-admin-generic', 'pcfw', [
+			'ajaxurl' => admin_url('admin-ajax.php'),
+			'nonce'   => wp_create_nonce('pcfw_admin_nonce'),
+		]);
+
 		if ($screen && 'product' === $screen->post_type) {
 
 			wp_enqueue_script('wc_product_code_admin', PRODUCT_CODE_URL . '/assets/js/' .
@@ -110,32 +116,34 @@ class PCFW_Admin_Settings {
 		}
 	
 		$user_id = get_current_user_id();
-		$pcfw_dismissed = get_user_meta($user_id, 'pcfw_notice_dismissed', true);
 		$pcfw_clicked = get_user_meta($user_id, 'pcfw_notice_clicked', true);
 		$last_pcfw_time = get_user_meta($user_id, 'pcfw_notice_last_time', true);
 		$current_time = time();
 		$thirty_days = 30 * DAY_IN_SECONDS;
 	
-		
-		
-		// If the review was clicked
+		// If the review was clicked, never show again
 		if ($pcfw_clicked) {
 			return;
 		}
 
-		// If 30 days have NOT passed, return early and do NOT show the notice
-		if ($last_pcfw_time && ($current_time - $last_nag_time) < $thirty_days) {
+		// If no timestamp exists (fresh install), set it now and wait 30 days
+		if (!$last_pcfw_time) {
+			update_user_meta($user_id, 'pcfw_notice_last_time', $current_time);
 			return;
 		}
 
-		echo '<div class="notice notice-info is-dismissible" id="pcfw_review_link">
-        <p>How do you like <strong>Product Code for WooCommerce</strong>? Your feedback assures the continued maintenance of this plugin! <a id="pcfw-feedback-done" class="button button-primary" href="https://wordpress.org/plugins/product-code-for-woocommerce/#reviews" target="_blank">Leave Feedback</a></p>
+		// If 30 days have NOT passed, do NOT show the notice
+		if (($current_time - $last_pcfw_time) < $thirty_days) {
+			return;
+		}
+
+		echo '<div class="notice notice-info is-dismissible product_code_notice" id="pcfw_review_notice">
+        <p>How do you like <strong>Product Code for WooCommerce</strong>? Your feedback assures the continued maintenance of this plugin! <a id="pcfw_review_link" class="button button-primary" href="https://wordpress.org/plugins/product-code-for-woocommerce/#reviews" target="_blank">Leave Feedback</a></p>
         </div>';
 	}
 
 	public function dismiss_notice() {
 		$user_id = get_current_user_id();
-		update_user_meta($user_id, 'pcfw_notice_dismissed', 1);
 		update_user_meta($user_id, 'pcfw_notice_last_time', time());
 		wp_die();
 	}
@@ -189,7 +197,7 @@ class PCFW_Admin_Settings {
 				'desc_tip' => true,
 				'description' => sprintf(
 					/* translators: 1 for label */
-					__('%s refers to a company’s unique internal product identifier, needed for online product fulfillment.', 'product-code-for-woocommerce'),
+					__('%s refers to a company\'s unique internal product identifier, needed for online product fulfillment.', 'product-code-for-woocommerce'),
 					$label
 				),
 				'value' => get_post_meta($post->ID, PRODUCT_CODE_FIELD_NAME, true)
@@ -203,19 +211,12 @@ class PCFW_Admin_Settings {
 					'desc_tip' => true,
 					'description' => sprintf(
 						/* translators: 1 for label */
-						__('%s refers to a company’s unique internal product identifier, needed for online product fulfillment.', 'product-code-for-woocommerce'),
+						__('%s refers to a company\'s unique internal product identifier, needed for online product fulfillment.', 'product-code-for-woocommerce'),
 						$label_second
 					),
 					'value' => get_post_meta($post->ID, PRODUCT_CODE_FIELD_NAME_SECOND, true)
 				]);
 			}
-
-			$html .= woocommerce_wp_text_input([
-				'id' => PRODUCT_CODE_COLOR,
-				'label' => __('Product Code Color', 'product-code-for-woocommerce'),
-				'desc_tip' => true,
-				'value' => get_post_meta($post->ID, PRODUCT_CODE_COLOR, true)
-			]);
 		}
 		return $html;
 	}
@@ -243,18 +244,7 @@ class PCFW_Admin_Settings {
 
 			// Saving Second Field Product Meta
 			$field_name = PRODUCT_CODE_FIELD_NAME_SECOND;
-			if (!empty($_POST[$field_name])) {
-				$code = sanitize_text_field($post_data[$field_name]);
-				if (!add_post_meta($post->ID, $field_name, $code, true)) {
-					update_post_meta($post->ID, $field_name, $code);
-				}
-			} else {
-				delete_post_meta($post->ID, $field_name);
-			}
-
-			// Saving PRODUCT_CODE_COLOR
-			$field_name = PRODUCT_CODE_COLOR;
-			if (!empty($_POST[$field_name])) {
+			if (!empty($post_data[$field_name])) {
 				$code = sanitize_text_field($post_data[$field_name]);
 				if (!add_post_meta($post->ID, $field_name, $code, true)) {
 					update_post_meta($post->ID, $field_name, $code);
@@ -492,16 +482,6 @@ class PCFW_Admin_Settings {
 
 		// Saving Second Field Product Meta
 		$field_name = PRODUCT_CODE_FIELD_NAME_SECOND;
-		if (!empty($post_data[$field_name])) {
-			$code = sanitize_text_field($post_data[$field_name]);
-			if (!add_post_meta($product_id, $field_name, $code, true)) {
-				update_post_meta($product_id, $field_name, $code);
-			}
-		} else {
-			delete_post_meta($product_id, $field_name);
-		}
-		// Saving 
-		$field_name = PRODUCT_CODE_COLOR;
 		if (!empty($post_data[$field_name])) {
 			$code = sanitize_text_field($post_data[$field_name]);
 			if (!add_post_meta($product_id, $field_name, $code, true)) {

@@ -12,8 +12,8 @@ function rlv_index_variation_product_code($content, $post) {
 		$variations = get_posts($args);
 		if (!empty($variations)) {
 			foreach ($variations as $variation) {
-				$sku = get_post_meta($variation->ID, '_product_code', true);
-				$content .= " $sku";
+				$product_code = get_post_meta($variation->ID, '_product_code', true);
+				$content .= " $product_code";
 			}
 		}
 	}

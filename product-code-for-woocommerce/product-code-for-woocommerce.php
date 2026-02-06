@@ -7,19 +7,21 @@
  * Plugin Name:          Product Code for WooCommerce
  * Plugin URI:           http://wordpress.org/plugins/product-code-for-woocommerce
  * Description:          Plugin provides a unique internal product identifier in addition to the GTIN, EAN, SKU and UPC throughout the order process. A secondary product code field can be activated from setup.
- * Version:              1.5.1
+ * Version:              1.5.11
  * Author:               Artios Media
  * Author URI:           http://www.artiosmedia.com
  * Assisting Developer:  Arafat Rahman
- * Copyright:            © 2018-2025 Artios Media (email: contact@artiosmedia.com).
+ * Copyright:            © 2018-2026 Artios Media (email: contact@artiosmedia.com).
  * License:              GNU General Public License v3.0
  * License URI:          http://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain:          product-code-for-woocommerce
  * Domain Path:          /languages
- * Tested up to:         6.8.1
+ * Tested up to:         6.9
+ * Requires at least:    5.8
  * WC requires at least: 6.5.0
- * WC tested up to:      9.8.4
- * PHP tested up to:     8.3.21
+ * WC tested up to:      10.4.3
+ * Requires PHP:         7.4
+ * PHP tested up to:     8.3.29
  */
 
 namespace Artiosmedia\WC_Product_Code;
@@ -28,17 +30,14 @@ define('PRODUCT_CODE_URL', plugins_url('', __FILE__));
 define('PRODUCT_CODE_PATH', plugin_dir_path(__FILE__));
 define('PRODUCT_CODE_FIELD_NAME', '_product_code');
 define('PRODUCT_CODE_FIELD_NAME_SECOND', '_product_code_second');
-define('PRODUCT_CODE_COLOR', '_product_code_color');
 
 
 define('PRODUCT_CODE_TEMPLATE_PATH', __DIR__ . '/templates');
 
-define('PRODUCT_CODE_VERSION', '1.5.0');
-define('PRODUCT_CODE_DB_VERSION', '1.5.0');
+define('PRODUCT_CODE_VERSION', '1.5.11');
+define('PRODUCT_CODE_DB_VERSION', '1.5.11');
 
 load_plugin_textdomain('product-code-for-woocommerce', false, basename(dirname(__FILE__)) . '/languages');
-
-require_once(__DIR__ . '/vendor/autoload.php');
 
 if (!class_exists('PCFW_Services')) {
 	include(PRODUCT_CODE_PATH . 'classes/class-pcfw-services.php');
@@ -47,18 +46,17 @@ if (!class_exists('PCFW_Services')) {
 if (!class_exists('PCFW_Admin_Settings')) {
 	include(PRODUCT_CODE_PATH . 'classes/class-pcfw-admin-settings.php');
 }
+
+if (!class_exists('PCFW_Settings_Page')) {
+	include(PRODUCT_CODE_PATH . 'classes/class-pcfw-settings-page.php');
+}
+
 if (!class_exists('PCFW_Wc_Export_Filter')) {
 	include(PRODUCT_CODE_PATH . 'modules/export/pcfw-export-support.php');
 }
 
 new PCFW_Services();
-
-add_filter('plugin_action_links_' . plugin_basename(__FILE__), function ($links) {
-	$settings = sprintf('<a href="%s">%s</a>', admin_url('admin.php?page=wc-settings&tab=products&section=product_code_settings'), __('Settings', 'product-code-for-woocommerce'));
-
-	array_unshift($links, $settings);
-	return $links;
-});
+PCFW_Settings_Page::get_instance();
 
 register_activation_hook(__FILE__, function () {
 	// Must Be deleted on other update ,
@@ -75,7 +73,8 @@ register_activation_hook(__FILE__, function () {
 });
 
 register_deactivation_hook(__FILE__, function () {
-	delete_option('product_code');
+	// Settings preserved on deactivation
+	// Data cleanup only occurs on uninstall if user opts in
 });
 
 add_action('before_woocommerce_init', function () {
@@ -89,6 +88,8 @@ add_action('before_woocommerce_init', function () {
 // run on upgrade
 add_action('admin_init', function () {
 
+	$plugin_options = get_site_option('product_code_info');
+	$upgrade_db = get_option('product_code_db_updated');
 
 	if (PRODUCT_CODE_VERSION === '1.0.6' && !$upgrade_db) {
 		//update_option('product_code_notice_dismiss', gmdate('Y-m-d', strtotime('+30 days')));
@@ -110,15 +111,12 @@ add_action('admin_init', function () {
 	update_site_option('product_code_info', $product_code_info);
 	/* Change the order of code and resolved offset error */
 
-	$plugin_options = get_site_option('product_code_info');
-	$upgrade_db	 = get_option('product_code_db_updated');
-
 	// Check if postmeta data is changed to the new name.
 	global $wpdb;
 	$results = $wpdb->get_results("SELECT * from {$wpdb->prefix}postmeta WHERE meta_key='_product_code_variant'");
 
 	// If plugin version is less then 1.2.0 then upgrade and if not update database after version upgrade still display the notice.
-	if (( $plugin_options['version'] < '1.2.2' && !$upgrade_db ) || !empty($results)) {
+	if (( $plugin_options && isset($plugin_options['version']) && $plugin_options['version'] < '1.2.2' && !$upgrade_db ) || !empty($results)) {
 		add_action('admin_notices', function () {
 			
 			$url = wp_nonce_url(
